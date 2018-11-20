@@ -19,13 +19,13 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author dell
  */
-public class MenuController implements Initializable {
+public class MenuControllerAdmin implements Initializable {
     @FXML
     private AnchorPane mainpane;
     
        @FXML
     private void actionProfil(ActionEvent event) throws IOException {
-        AnchorPane anc = FXMLLoader.load(getClass().getResource("/vue/Profil2Vue.fxml"));
+        AnchorPane anc = FXMLLoader.load(getClass().getResource("/vue/ProfilVue.fxml"));
         mainpane.getChildren().setAll(anc);
     }
      @FXML
@@ -35,7 +35,7 @@ public class MenuController implements Initializable {
     }
       @FXML
     private void actionEmploye(ActionEvent event) throws IOException {
-        AnchorPane anc = FXMLLoader.load(getClass().getResource("/vue/Employe2Vue.fxml"));
+        AnchorPane anc = FXMLLoader.load(getClass().getResource("/vue/EmployeVue.fxml"));
         mainpane.getChildren().setAll(anc);
     }
       @FXML

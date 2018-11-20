@@ -27,7 +27,6 @@ public class Etudiant {
     private String lieuNaissance;
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
-  
     private String cin;
     private String niveauEtude;
     @ManyToOne
@@ -53,6 +52,13 @@ public class Etudiant {
         this.cin = cin;
         this.niveauEtude = niveauEtude;
         this.etablissement = etablissement;
+    }
+
+    public Etudiant(int id, String nomComplet, Date dateNaissance, String cin) {
+        this.id = id;
+        this.nomComplet = nomComplet;
+        this.dateNaissance = dateNaissance;
+        this.cin = cin;
     }
 
     public int getId() {

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="446.0" prefWidth="634.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EtablissementController">
+<AnchorPane id="AnchorPane" prefHeight="446.0" prefWidth="634.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EtablissementController">
    <children>
       <SplitPane dividerPositions="0.5" layoutX="175.0" layoutY="76.0" orientation="VERTICAL" prefHeight="446.0" prefWidth="634.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
         <items>
@@ -63,14 +63,14 @@
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <TextField fx:id="nom" GridPane.columnIndex="1">
+                        <TextField fx:id="nom" nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="academie" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField fx:id="region" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="type" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="academie" nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="region" nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="type" nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Button mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="110.0" text="حذف" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
                         <Button mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="110.0" text="تعديل" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
                         <Button mnemonicParsing="false" onAction="#saveAction" prefHeight="25.0" prefWidth="110.0" text="إضافة" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />

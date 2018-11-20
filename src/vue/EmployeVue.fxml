@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="720.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="720.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeController">
    <children>
       <SplitPane dividerPositions="0.5855704697986577" layoutX="318.0" layoutY="157.0" orientation="VERTICAL" prefHeight="572.0" prefWidth="718.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
         <items>
@@ -72,16 +72,16 @@
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <TextField fx:id="nom" GridPane.columnIndex="1" />
-                        <TextField fx:id="email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="prenom" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <DatePicker fx:id="dateNaissance" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
-                        <DatePicker fx:id="dateEmbauche" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-                        <ComboBox fx:id="profil" prefHeight="25.0" prefWidth="176.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+                        <TextField fx:id="nom" nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1" />
+                        <TextField fx:id="email" nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="prenom" nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <DatePicker fx:id="dateNaissance" nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+                        <DatePicker fx:id="dateEmbauche" nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                        <ComboBox fx:id="profil" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="176.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
                         <Button mnemonicParsing="false" onAction="#saveAction" prefHeight="25.0" prefWidth="124.0" text="إضافة" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                         <Button mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="124.0" text="حذف" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
                         <Button mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="124.0" text="تعديل" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                        <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <PasswordField fx:id="password" nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                </children>
