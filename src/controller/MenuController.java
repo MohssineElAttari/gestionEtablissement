@@ -25,7 +25,7 @@ public class MenuController implements Initializable {
     
        @FXML
     private void actionProfil(ActionEvent event) throws IOException {
-        AnchorPane anc = FXMLLoader.load(getClass().getResource("/vue/ProfilVue.fxml"));
+        AnchorPane anc = FXMLLoader.load(getClass().getResource("/vue/Profil2Vue.fxml"));
         mainpane.getChildren().setAll(anc);
     }
      @FXML
@@ -35,7 +35,7 @@ public class MenuController implements Initializable {
     }
       @FXML
     private void actionEmploye(ActionEvent event) throws IOException {
-        AnchorPane anc = FXMLLoader.load(getClass().getResource("/vue/EmployeVue.fxml"));
+        AnchorPane anc = FXMLLoader.load(getClass().getResource("/vue/Employe2Vue.fxml"));
         mainpane.getChildren().setAll(anc);
     }
       @FXML

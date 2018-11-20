@@ -188,7 +188,7 @@ public class EtudiantController implements Initializable {
         etablissements.clear();
         fillComboBox();
         cId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        cNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        cNom.setCellValueFactory(new PropertyValueFactory<>("nomComplet"));
 
         cDateNaissance.setCellValueFactory(new PropertyValueFactory<>("dateNaissance"));
         cLieuNaissance.setCellValueFactory(new PropertyValueFactory<>("lieuNaissance"));
