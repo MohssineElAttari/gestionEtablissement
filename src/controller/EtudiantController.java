@@ -48,8 +48,6 @@ public class EtudiantController implements Initializable {
     @FXML
     private TextField nom;
     @FXML
-    private TextField prenom;
-    @FXML
     private DatePicker dateNaissance;
     @FXML
     private TextField lieuNaissance;
@@ -67,8 +65,6 @@ public class EtudiantController implements Initializable {
     @FXML
     private TableColumn<Etudiant, String> cNom;
     @FXML
-    private TableColumn<Etudiant, String> cPrenom;
-    @FXML
     private TableColumn<Etudiant, String> cDateNaissance;
     @FXML
     private TableColumn<Etudiant, String> cLieuNaissance;
@@ -82,7 +78,6 @@ public class EtudiantController implements Initializable {
     @FXML
     private void saveAction(ActionEvent event) {
         String n = nom.getText().toString();
-        String p = prenom.getText().toString();
         LocalDate d = dateNaissance.getValue();
         Instant instant = Instant.from(d.atStartOfDay(ZoneId.systemDefault()));
         dt = Date.from(instant);
@@ -90,7 +85,7 @@ public class EtudiantController implements Initializable {
         String c = cin.getText().toString();
         String niveau = niveauEtude.getText().toString();
         Etablissement e = etablissement.getValue();
-        es.create(new Etudiant(n, p, dt, l, c, niveau, e));
+        es.create(new Etudiant(n, l, dt, c, niveau, e));
         load();
         clean();
 
@@ -134,8 +129,7 @@ public class EtudiantController implements Initializable {
 //        Optional<ButtonType> result = alert.showAndWait();
 //        if (result.get() == ButtonType.OK) {
             Etudiant e = es.findById(index);
-            e.setNom(nom.getText());
-            e.setPrenom(prenom.getText());
+            e.setNomComplet(nom.getText());
             Instant instant = Instant.from(dateNaissance.getValue().atStartOfDay(ZoneId.systemDefault()));
             dt = Date.from(instant);
             e.setDateNaissance(dt);
@@ -160,8 +154,8 @@ public class EtudiantController implements Initializable {
                 TablePosition pos = (TablePosition) etudiants.getSelectionModel().getSelectedCells().get(0);
                 int row = pos.getRow();
                 Etudiant item = (Etudiant) etudiants.getItems().get(row);
-                nom.setText(item.getNom());
-                prenom.setText(item.getPrenom());
+                nom.setText(item.getNomComplet());
+
                 lieuNaissance.setText(item.getLieuNaissance());
                 cin.setText(item.getCin());
                 niveauEtude.setText(item.getNiveauEtude());
@@ -182,7 +176,6 @@ public class EtudiantController implements Initializable {
 
     public void clean() {
         nom.setText("");
-        prenom.setText("");
         dateNaissance.setValue(null);
         lieuNaissance.setText("");
         cin.setText("");
@@ -196,14 +189,14 @@ public class EtudiantController implements Initializable {
         fillComboBox();
         cId.setCellValueFactory(new PropertyValueFactory<>("id"));
         cNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        cPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+
         cDateNaissance.setCellValueFactory(new PropertyValueFactory<>("dateNaissance"));
         cLieuNaissance.setCellValueFactory(new PropertyValueFactory<>("lieuNaissance"));
         cCin.setCellValueFactory(new PropertyValueFactory<>("cin"));
         cNiveauEtude.setCellValueFactory(new PropertyValueFactory<>("niveauEtude"));
         cEtablissement.setCellValueFactory(new PropertyValueFactory<>("etablissement"));
         for (Etudiant e : es.findAll()) {
-            etudiantList.add(new Etudiant(e.getId(), e.getNom(), e.getPrenom(), e.getDateNaissance(), e.getLieuNaissance(), e.getCin(), e.getNiveauEtude(), e.getEtablissement()));
+            etudiantList.add(new Etudiant(e.getId(), e.getNomComplet(), e.getLieuNaissance(), e.getDateNaissance(), e.getCin(), e.getNiveauEtude(), e.getEtablissement()));
         }
 
         etudiants.setItems(etudiantList);

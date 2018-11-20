@@ -37,8 +37,8 @@ public class Main extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       Session s =  HibernateUtil.getSessionFactory().openSession();
-         s.beginTransaction();
+       Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
         launch(args);
        
     }

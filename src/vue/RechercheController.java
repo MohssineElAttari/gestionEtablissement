@@ -89,7 +89,7 @@ public class RechercheController implements Initializable {
         cNiveauEtude.setCellValueFactory(new PropertyValueFactory<>("niveauEtude"));
         cEtablissement.setCellValueFactory(new PropertyValueFactory<>("etablissement"));
         for (Etudiant e : es.findAll()) {
-            etudiantList.add(new Etudiant(e.getId(), e.getNom(), e.getPrenom(), e.getDateNaissance(), e.getLieuNaissance(), e.getCin(), e.getNiveauEtude(),e.getEtablissement()));
+            etudiantList.add(new Etudiant(e.getId(), e.getNomComplet(), e.getLieuNaissance(), e.getDateNaissance(), e.getCin(), e.getNiveauEtude(),e.getEtablissement()));
         }
 
         etudiants.setItems(etudiantList);

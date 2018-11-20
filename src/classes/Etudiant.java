@@ -23,12 +23,11 @@ public class Etudiant {
     @Id
     @GeneratedValue
     private int id;
-
-    private String nom;
-    private String prenom;
+    private String nomComplet;  
+    private String lieuNaissance;
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
-    private String lieuNaissance;
+  
     private String cin;
     private String niveauEtude;
     @ManyToOne
@@ -37,9 +36,9 @@ public class Etudiant {
     public Etudiant() {
     }
 
-    public Etudiant(String nom, String prenom, Date dateNaissance, String lieuNaissance, String cin, String niveauEtude, Etablissement etablissement) {
-        this.nom = nom;
-        this.prenom = prenom;
+    public Etudiant(int id, String nomComplet,  String lieuNaissance ,Date dateNaissance, String cin, String niveauEtude, Etablissement etablissement) {
+        this.id = id;
+        this.nomComplet = nomComplet;
         this.dateNaissance = dateNaissance;
         this.lieuNaissance = lieuNaissance;
         this.cin = cin;
@@ -47,10 +46,8 @@ public class Etudiant {
         this.etablissement = etablissement;
     }
 
-    public Etudiant(int id, String nom, String prenom, Date dateNaissance, String lieuNaissance, String cin, String niveauEtude, Etablissement etablissement) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
+    public Etudiant(String nomComplet, String lieuNaissance, Date dateNaissance, String cin, String niveauEtude, Etablissement etablissement) {
+        this.nomComplet = nomComplet;
         this.dateNaissance = dateNaissance;
         this.lieuNaissance = lieuNaissance;
         this.cin = cin;
@@ -66,20 +63,12 @@ public class Etudiant {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNomComplet() {
+        return nomComplet;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setNomComplet(String nomComplet) {
+        this.nomComplet = nomComplet;
     }
 
     public Date getDateNaissance() {
@@ -122,5 +111,6 @@ public class Etudiant {
         this.etablissement = etablissement;
     }
 
+  
     
 }
