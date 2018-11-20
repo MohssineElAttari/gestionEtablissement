@@ -29,6 +29,11 @@ public class Profil {
     public Profil() {
     }
 
+    @Override
+    public String toString() {
+        return libelle ;
+    }
+
     public Profil(String code, String libelle) {
         this.code = code;
         this.libelle = libelle;

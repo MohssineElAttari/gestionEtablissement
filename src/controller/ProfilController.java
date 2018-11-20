@@ -11,12 +11,15 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import services.ProfilService;
 
 /**
@@ -35,7 +38,7 @@ public class ProfilController implements Initializable {
     @FXML
     private TextField libelle;
     @FXML
-    private TableView profils;
+    private TableView<Profil> profils;
     @FXML
     private TableColumn<Profil, String> cId;
     @FXML
@@ -54,10 +57,44 @@ public class ProfilController implements Initializable {
 
     }
 
-    @Override
+    @FXML
+    private void delete() {
+        ps.delete(ps.findById(index));
+        profilList.clear();
+        load();
+        clean();
 
+    }
+
+    @FXML
+    private void update() {
+
+        Profil p2 = ps.findById(index);
+
+        p2.setCode(code.getText());
+        p2.setLibelle(libelle.getText());
+
+        ps.update(p2);
+        profilList.clear();
+        load();
+        clean();
+    }
+
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         load();
+        profils.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                TablePosition pos = (TablePosition) profils.getSelectionModel().getSelectedCells().get(0);
+                int row = pos.getRow();
+                Profil items = profils.getItems().get(row);
+                code.setText(items.getCode());
+                libelle.setText(items.getLibelle());
+                index = items.getId();
+                load();
+            }
+        });
     }
 
     public void clean() {

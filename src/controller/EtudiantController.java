@@ -107,32 +107,32 @@ public class EtudiantController implements Initializable {
     }
     @FXML
     private void delete() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("تأكيد");
-        alert.setHeaderText("تأكيد الحدف");
-        alert.setContentText("هل أنت متأكد من إزالة هدا الطالب ؟");
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
+//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//        alert.setTitle("تأكيد");
+//        alert.setHeaderText("تأكيد الحدف");
+//        alert.setContentText("هل أنت متأكد من إزالة هدا الطالب ؟");
+//
+//        Optional<ButtonType> result = alert.showAndWait();
+//        if (result.get() == ButtonType.OK) {
             es.delete(es.findById(index));
             etudiantList.clear();
             load();
             clean();
-        } else {
-            // ... user chose CANCEL or closed the dialog
-        }
+//        } else {
+//            // ... user chose CANCEL or closed the dialog
+//        }
 
     }
 
     @FXML
     private void update() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("تأكيد");
-        alert.setHeaderText(" تأكيد التعديل ؟");
-        alert.setContentText("هل أنت متأكد من تعديل معلومات هدا الطالب");
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
+//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//        alert.setTitle("تأكيد");
+//        alert.setHeaderText(" تأكيد التعديل ؟");
+//        alert.setContentText("هل أنت متأكد من تعديل معلومات هدا الطالب");
+//
+//        Optional<ButtonType> result = alert.showAndWait();
+//        if (result.get() == ButtonType.OK) {
             Etudiant e = es.findById(index);
             e.setNom(nom.getText());
             e.setPrenom(prenom.getText());
@@ -142,11 +142,13 @@ public class EtudiantController implements Initializable {
             e.setLieuNaissance(lieuNaissance.getText());
             e.setCin(cin.getText());
             e.setNiveauEtude(niveauEtude.getText());
+            e.setEtablissement(etablissement.getValue());
+            
             es.update(e);
             etudiantList.clear();
             load();
             clean();
-        }
+        
     }
 
     @Override

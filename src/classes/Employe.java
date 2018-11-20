@@ -47,6 +47,35 @@ public class Employe {
         this.profil = profil;
     }
 
+    public Employe(String nom, String prenom, String email, String password, Date dateNaissance, Date dateEmbauche, Profil profil) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.password = password;
+        this.dateNaissance = dateNaissance;
+        this.dateEmbauche = dateEmbauche;
+        this.profil = profil;
+    }
+
+    public Employe(int id, String nom, String prenom, String email, String password, Date dateNaissance, Date dateEmbauche, Profil profil) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.password = password;
+        this.dateNaissance = dateNaissance;
+        this.dateEmbauche = dateEmbauche;
+        this.profil = profil;
+    }
+
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
     public Employe(String nom, String prenom, Date dateEmbauche, String email, String password) {
         this.nom = nom;
         this.prenom = prenom;
@@ -101,6 +130,16 @@ public class Employe {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Employe(int id, String nom, String prenom, String email, Date dateNaissance, Date dateEmbauche, Profil profil) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.dateNaissance = dateNaissance;
+        this.dateEmbauche = dateEmbauche;
+        this.profil = profil;
     }
 
     public String getPassword() {

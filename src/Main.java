@@ -26,7 +26,7 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws IOException {
-       Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("vue/EtudiantVue.fxml"));
+       Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("vue/MenuVue.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("لوحة تسجيل الدخول");
@@ -37,7 +37,7 @@ public class Main extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Session s = HibernateUtil.getSessionFactory().openSession();
+       Session s =  HibernateUtil.getSessionFactory().openSession();
          s.beginTransaction();
         launch(args);
        

@@ -23,14 +23,22 @@ public class MenuController implements Initializable {
     @FXML
     private AnchorPane mainpane;
     
-    @FXML
+       @FXML
     private void actionProfil(ActionEvent event) throws IOException {
         AnchorPane anc = FXMLLoader.load(getClass().getResource("/vue/ProfilVue.fxml"));
         mainpane.getChildren().setAll(anc);
     }
-
-
-    @FXML
+     @FXML
+    private void actionEtablissement(ActionEvent event) throws IOException {
+        AnchorPane anc = FXMLLoader.load(getClass().getResource("/vue/EtablissementVue.fxml"));
+        mainpane.getChildren().setAll(anc);
+    }
+      @FXML
+    private void actionEmploye(ActionEvent event) throws IOException {
+        AnchorPane anc = FXMLLoader.load(getClass().getResource("/vue/EmployeVue.fxml"));
+        mainpane.getChildren().setAll(anc);
+    }
+      @FXML
     private void actionEtudiant(ActionEvent event) throws IOException {
         AnchorPane anc = FXMLLoader.load(getClass().getResource("/vue/EtudiantVue.fxml"));
         mainpane.getChildren().setAll(anc);

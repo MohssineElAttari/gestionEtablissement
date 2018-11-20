@@ -44,17 +44,17 @@
                         <TextField fx:id="libelle" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                            <children>
-                              <Button layoutX="65.0" layoutY="24.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="25.0" prefWidth="128.0" text="Ajouter" />
+                              <Button layoutX="69.0" layoutY="24.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="25.0" prefWidth="128.0" text="Ajouter" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <children>
-                              <Button layoutX="69.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Button" />
+                              <Button layoutX="69.0" layoutY="23.0" mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="128.0" text="Modifier" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                            <children>
-                              <Button layoutX="67.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Button" />
+                              <Button layoutX="67.0" layoutY="13.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="128.0" text="Supprimer" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -63,11 +63,15 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="230.0" prefWidth="630.0">
                <children>
-                  <TableView prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+                  <TableView fx:id="profils" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
+                      <TableColumn fx:id="cId" prefWidth="75.0" text="ID" />
+                      <TableColumn fx:id="cCode" prefWidth="75.0" text="Code" />
+                        <TableColumn fx:id="cLibelle" prefWidth="75.0" text="Libelle" />
                     </columns>
+                     <columnResizePolicy>
+                        <!--<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />-->
+                     </columnResizePolicy>
                   </TableView>
                </children>
             </AnchorPane>
