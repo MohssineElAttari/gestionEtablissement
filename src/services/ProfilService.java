@@ -5,6 +5,7 @@
  */
 package services;
 
+import classes.Employe;
 import classes.Profil;
 import dao.IDao;
 import java.util.List;
@@ -115,6 +116,4 @@ public class ProfilService implements IDao<Profil> {
             return profils;
         }
     }
-
-    
 }

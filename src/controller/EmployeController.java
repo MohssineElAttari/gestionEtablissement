@@ -6,6 +6,7 @@
 package controller;
 
 import classes.Employe;
+import classes.Etablissement;
 import classes.Profil;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -14,7 +15,6 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -35,6 +35,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import services.EmployeService;
+import services.EtablissementService;
 import services.ProfilService;
 
 /**
@@ -45,12 +46,12 @@ import services.ProfilService;
 public class EmployeController implements Initializable {
 
     EmployeService es = new EmployeService();
+    EtablissementService ets = new EtablissementService();
     ProfilService ps = new ProfilService();
     ObservableList<Employe> employeList = FXCollections.observableArrayList();
     ObservableList<Profil> profilList = FXCollections.observableArrayList();
-
+    ObservableList<Etablissement> etablissements = FXCollections.observableArrayList();
     private static int index;
-
 
     Date dt1 = new Date();
     Date dt2 = new Date();
@@ -70,7 +71,9 @@ public class EmployeController implements Initializable {
     @FXML
     private ComboBox<Profil> profil;
     @FXML
-    private TableView<Employe> employes;
+    private ComboBox<Etablissement> etablissement;
+    @FXML
+    private TableView employes;
     @FXML
     private TableColumn<Employe, String> cId;
     @FXML
@@ -85,6 +88,8 @@ public class EmployeController implements Initializable {
     private TableColumn<Employe, LocalDate> cDateEmbauche;
     @FXML
     private TableColumn<Profil, String> cProfil;
+    @FXML
+    private TableColumn<Etablissement, String> cEtablissement;
 
     @FXML
     private void saveAction(ActionEvent event) {
@@ -100,41 +105,43 @@ public class EmployeController implements Initializable {
         Instant instant2 = Instant.from(de.atStartOfDay(ZoneId.systemDefault()));
         dt2 = Date.from(instant2);
         Profil pr = profil.getValue();
-                
-
-//        int selected = profil.getSelectionModel().getSelectedIndex();
-        //Profil prof = ps.findById((profil.getSelectionModel().getSelectedIndex()));
-        es.create(new Employe(n, p, e, pa, dt1, dt2, pr));
+        Etablissement e1 = etablissement.getValue();
+        es.create(new Employe(n, p, e, pa, dt1, dt2, pr, e1));
         load();
         clean();
 
     }
-   public void fillComboBox(){
-    for(Profil p:ps.findAll())
-    {
-       profilList.add(p);
+
+    public void fillComboBox() {
+        for (Profil p : ps.findAll()) {
+            profilList.add(p);
+        }
+        profil.setItems(profilList);
     }
-     profil.setItems(profilList);
+
+    public void fillComboBoxEtablissement() {
+        for (Etablissement et : ets.findAll()) {
+            etablissements.add(et);
+        }
+        etablissement.setItems(etablissements);
     }
 
     @FXML
     private void delete(ActionEvent event) {
-//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//        alert.setTitle("تأكيد");
-//        alert.setHeaderText("تأكيد الحدف");
-//        alert.setContentText("هل أنت متأكد من إزالة هدا الطالب ؟");
-//
-//        Optional<ButtonType> result = alert.showAndWait();
-//        if (result.get() == ButtonType.OK) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("تأكيد");
+        alert.setHeaderText("تأكيد الحدف");
+        alert.setContentText("هل أنت متأكد من إزالة هدا الطالب ؟");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
             es.delete(es.findById(index));
             employeList.clear();
             load();
-            
 
-//        } else {
-//            
-//        }
-    
+        } else {
+
+        }
     }
 
     @FXML
@@ -150,6 +157,7 @@ public class EmployeController implements Initializable {
         dt2 = Date.from(instant2);
         e.setDateEmbauche(dt2);
         e.setProfil(profil.getValue());
+        e.setEtablissement(etablissement.getValue());
         es.update(e);
         employeList.clear();
         load();
@@ -159,17 +167,17 @@ public class EmployeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         load();
-        
         employes.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 TablePosition pos = (TablePosition) employes.getSelectionModel().getSelectedCells().get(0);
                 int row = pos.getRow();
-                Employe item = employes.getItems().get(row);
+                Employe item = (Employe) employes.getItems().get(row);
                 nom.setText(item.getNom());
                 prenom.setText(item.getPrenom());
                 email.setText(item.getEmail());
                 profil.setValue(item.getProfil());
+                etablissement.setValue(item.getEtablissement());
                 index = item.getId();
 
                 Date date1 = item.getDateNaissance();
@@ -197,12 +205,16 @@ public class EmployeController implements Initializable {
         password.setText("");
         dateNaissance.setValue(LocalDate.now());
         dateEmbauche.setValue(LocalDate.now());
-        profil.getSelectionModel().clearSelection();
+        profil.setValue(null);
+        etablissement.setValue(null);
     }
 
     public void load() {
         employeList.clear();
+        etablissements.clear();
+        profilList.clear();
         fillComboBox();
+        fillComboBoxEtablissement();
         cId.setCellValueFactory(new PropertyValueFactory<>("id"));
         cNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         cPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
@@ -210,18 +222,11 @@ public class EmployeController implements Initializable {
         cDateNaissance.setCellValueFactory(new PropertyValueFactory<>("dateNaissance"));
         cDateEmbauche.setCellValueFactory(new PropertyValueFactory<>("dateEmbauche"));
         cProfil.setCellValueFactory(new PropertyValueFactory<>("profil"));
+        cEtablissement.setCellValueFactory(new PropertyValueFactory<>("etablissement"));
         for (Employe e : es.findAll()) {
-            employeList.add(new Employe(e.getId(), e.getNom(), e.getPrenom(), e.getEmail(), e.getDateNaissance(), e.getDateEmbauche(), e.getProfil()));
+            employeList.add(new Employe(e.getId(), e.getNom(), e.getPrenom(), e.getEmail(), e.getPassword(), e.getDateNaissance(), e.getDateEmbauche(), e.getProfil(), e.getEtablissement()));
         }
         employes.setItems(employeList);
     }
 
-   
-
-//    public void loadProfil() {
-//        profilList.clear();
-//        profilList.addAll(ps.findAll());
-//        System.out.println(profil.getId());
-//        profil.setItems(profilList);
-//    }
 }

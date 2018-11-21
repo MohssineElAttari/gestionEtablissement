@@ -1,10 +1,10 @@
-/*#bacgroundLogin{
+#bacgroundLogin{
     -fx-background-color: #333;
 }
 
 #bacgroundLogin TextField ,
-//#bacgroundLogin PasswordFieldjhdjasdjhdsnbm,
+#bacgroundLogin PasswordFieldjhdjasdjhdsnbm,
 {
-        -fx-background-radius: 10;
-}*/
+    -fx-background-radius: 10;
+}
 

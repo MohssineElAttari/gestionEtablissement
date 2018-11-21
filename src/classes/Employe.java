@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package classes;
 
 import java.util.Date;
@@ -33,31 +28,10 @@ public class Employe {
     private Date dateEmbauche;
     @ManyToOne
     private Profil profil;
+    @ManyToOne
+    private Etablissement etablissement;
 
-    public Employe() {
-    }
-
-    public Employe(String nom, String prenom, Date dateEmbauche, String email, String password, Profil profil) {
-
-        this.nom = nom;
-        this.prenom = prenom;
-        this.dateEmbauche = dateEmbauche;
-        this.email = email;
-        this.password = password;
-        this.profil = profil;
-    }
-
-    public Employe(String nom, String prenom, String email, String password, Date dateNaissance, Date dateEmbauche, Profil profil) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.password = password;
-        this.dateNaissance = dateNaissance;
-        this.dateEmbauche = dateEmbauche;
-        this.profil = profil;
-    }
-
-    public Employe(int id, String nom, String prenom, String email, String password, Date dateNaissance, Date dateEmbauche, Profil profil) {
+    public Employe(int id, String nom, String prenom, String email, String password, Date dateNaissance, Date dateEmbauche, Profil profil, Etablissement etablissement) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -66,34 +40,33 @@ public class Employe {
         this.dateNaissance = dateNaissance;
         this.dateEmbauche = dateEmbauche;
         this.profil = profil;
+        this.etablissement = etablissement;
     }
 
-    public Date getDateNaissance() {
-        return dateNaissance;
-    }
-
-    public void setDateNaissance(Date dateNaissance) {
-        this.dateNaissance = dateNaissance;
-    }
-
-    public Employe(String nom, String prenom, Date dateEmbauche, String email, String password) {
+    public Employe(String nom, String prenom, String email, String password, Date dateNaissance, Date dateEmbauche, Profil profil, Etablissement etablissement) {
         this.nom = nom;
         this.prenom = prenom;
+        this.email = email;
+        this.password = password;
+        this.dateNaissance = dateNaissance;
         this.dateEmbauche = dateEmbauche;
+        this.profil = profil;
+        this.etablissement = etablissement;
+    }
+
+    public Employe(int id, String nom, String prenom, String email, String password) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
         this.email = email;
         this.password = password;
     }
 
+    public Employe() {
+    }
+
     public int getId() {
         return id;
-    }
-
-    public Profil getProfil() {
-        return profil;
-    }
-
-    public void setProfil(Profil profil) {
-        this.profil = profil;
     }
 
     public void setId(int id) {
@@ -116,30 +89,12 @@ public class Employe {
         this.prenom = prenom;
     }
 
-    public Date getDateEmbauche() {
-        return dateEmbauche;
-    }
-
-    public void setDateEmbauche(Date dateEmbauche) {
-        this.dateEmbauche = dateEmbauche;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Employe(int id, String nom, String prenom, String email, Date dateNaissance, Date dateEmbauche, Profil profil) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.dateNaissance = dateNaissance;
-        this.dateEmbauche = dateEmbauche;
-        this.profil = profil;
     }
 
     public String getPassword() {
@@ -150,4 +105,35 @@ public class Employe {
         this.password = password;
     }
 
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public Date getDateEmbauche() {
+        return dateEmbauche;
+    }
+
+    public void setDateEmbauche(Date dateEmbauche) {
+        this.dateEmbauche = dateEmbauche;
+    }
+
+    public Profil getProfil() {
+        return profil;
+    }
+
+    public void setProfil(Profil profil) {
+        this.profil = profil;
+    }
+
+    public Etablissement getEtablissement() {
+        return etablissement;
+    }
+
+    public void setEtablissement(Etablissement etablissement) {
+        this.etablissement = etablissement;
+    }
 }

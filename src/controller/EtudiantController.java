@@ -38,7 +38,6 @@ import services.ProfilService;
  * @author mohss
  */
 public class EtudiantController implements Initializable {
-
     EtudiantService es = new EtudiantService();
     EtablissementService ets = new EtablissementService();
     ObservableList<Etudiant> etudiantList = FXCollections.observableArrayList();
@@ -102,32 +101,32 @@ public class EtudiantController implements Initializable {
     }
     @FXML
     private void delete() {
-//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//        alert.setTitle("تأكيد");
-//        alert.setHeaderText("تأكيد الحدف");
-//        alert.setContentText("هل أنت متأكد من إزالة هدا الطالب ؟");
-//
-//        Optional<ButtonType> result = alert.showAndWait();
-//        if (result.get() == ButtonType.OK) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("تأكيد");
+        alert.setHeaderText("تأكيد الحدف");
+        alert.setContentText("هل أنت متأكد من إزالة هدا الطالب ؟");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
             es.delete(es.findById(index));
             etudiantList.clear();
             load();
             clean();
-//        } else {
-//            // ... user chose CANCEL or closed the dialog
-//        }
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
 
     }
 
     @FXML
     private void update() {
-//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//        alert.setTitle("تأكيد");
-//        alert.setHeaderText(" تأكيد التعديل ؟");
-//        alert.setContentText("هل أنت متأكد من تعديل معلومات هدا الطالب");
-//
-//        Optional<ButtonType> result = alert.showAndWait();
-//        if (result.get() == ButtonType.OK) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("تأكيد");
+        alert.setHeaderText(" تأكيد التعديل ؟");
+        alert.setContentText("هل أنت متأكد من تعديل معلومات هدا الطالب");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
             Etudiant e = es.findById(index);
             e.setNomComplet(nom.getText());
             Instant instant = Instant.from(dateNaissance.getValue().atStartOfDay(ZoneId.systemDefault()));
@@ -144,7 +143,7 @@ public class EtudiantController implements Initializable {
             clean();
         
     }
-
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         load();

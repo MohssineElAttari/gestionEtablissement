@@ -111,32 +111,17 @@ public class EmployeService implements IDao<Employe> {
         return employes;
     }
 
-//    public Employe findByEmail(String email) {
-//        Employe e = null;
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        session.beginTransaction();
-//        e = (Employe) session.createQuery("Select e from Employe e where email=? and password =?").setParameter(0, email).uniqueResult();
-//        session.getTransaction().commit();
-//        session.close();
-//
-//        return e;
-//    }
+    public Employe findByEmail(String email) {
+        Employe e = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        e = (Employe) session.createQuery("Select e from Employe e where email=? ").setParameter(0, email).uniqueResult();
+        session.getTransaction().commit();
+        session.close();
 
-        public List<Employe> FindBetweenDates(int id, Date d1, Date d2) {
-        List<Employe> ee = null;
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-        ee = s.createQuery("SELECT e FROM Employe e WHERE e.profil.id = ? AND  dateEmbauche BETWEEN ? AND ? ").setParameter(0, id).setParameter(1, d1).setParameter(2, d2).list();
-
-//        ee = query.list();
-        s.getTransaction().commit();
-        s.close();
-
-        return ee;
+        return e;
     }
-       
+
     public List<Employe> findEmployeByProfilId(int id) {
         List<Employe> empList = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -148,38 +133,13 @@ public class EmployeService implements IDao<Employe> {
         return empList;
     }
 
-//    public List<Employe> FindByNameAndLastName(String nom, String prenom) {
-//        List<Employe> ee = null;
-//        Session s = HibernateUtil.getSessionFactory().openSession();
-//        s.beginTransaction();
-//        ee = s.createQuery("SELECT e FROM Employe e WHERE e.nom = ? AND  e.prenom ? ").setParameter(0, nom).setParameter(1, prenom).list();
-//
-////        ee = query.list();
-//        s.getTransaction().commit();
-//        s.close();
-//
-//        return ee;
-//    }
-
     public int CountEmployesByProfilName(String nom) {
         int nb = 0;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        nb = Integer.parseInt(session.createQuery("SELECT COUNT(e) FROM Employe e WHERE e.profil.libelle =" + nom).uniqueResult().toString());
+        nb = Integer.parseInt(session.createQuery("SELECT COUNT(e) FROM Employe e, Profil p WHERE e.profil = p.id and p.libelle = ? ").setParameter(0, nom).uniqueResult().toString());
         session.getTransaction().commit();
         session.close();
         return nb;
     }
-
-    public Employe findByEmail(String email) {
-        Employe e = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        e = (Employe) session.createQuery("Select e from Employe e where e.email=?").setParameter(0, email).uniqueResult();
-        session.getTransaction().commit();
-        session.close();
-
-        return e;
-    }
-
 }

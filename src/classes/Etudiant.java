@@ -6,6 +6,7 @@
 package classes;
 
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,10 +24,11 @@ public class Etudiant {
     @Id
     @GeneratedValue
     private int id;
-    private String nomComplet;  
+    private String nomComplet;
     private String lieuNaissance;
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
+    @Column(name = "cin", unique = true)
     private String cin;
     private String niveauEtude;
     @ManyToOne
@@ -35,7 +37,7 @@ public class Etudiant {
     public Etudiant() {
     }
 
-    public Etudiant(int id, String nomComplet,  String lieuNaissance ,Date dateNaissance, String cin, String niveauEtude, Etablissement etablissement) {
+    public Etudiant(int id, String nomComplet, String lieuNaissance, Date dateNaissance, String cin, String niveauEtude, Etablissement etablissement) {
         this.id = id;
         this.nomComplet = nomComplet;
         this.dateNaissance = dateNaissance;
@@ -117,6 +119,4 @@ public class Etudiant {
         this.etablissement = etablissement;
     }
 
-  
-    
 }
