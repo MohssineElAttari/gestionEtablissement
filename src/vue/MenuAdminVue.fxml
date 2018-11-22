@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -18,19 +19,22 @@
         </AnchorPane>
         <HBox prefHeight="88.0" prefWidth="726.0" style="-fx-background-color: #16345B;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
+                  <ImageView fx:id="logo" fitHeight="88.0" fitWidth="145.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                      <cursor>
+                          <Cursor fx:constant="DEFAULT" />
+                      </cursor>
+               <image>
+                  <Image url="@../img/ministere.jpg" />
+               </image>
+                  </ImageView>
                 <AnchorPane prefHeight="88.0" prefWidth="726.0">
-                    <children>
-                        <ImageView fx:id="logo1" fitHeight="88.0" fitWidth="200.0" layoutX="526.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-                            <cursor>
-                                <Cursor fx:constant="DEFAULT" />
-                            </cursor>
-                        </ImageView>
-                        <Label layoutX="190.0" layoutY="14.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="63.0" prefWidth="312.0" text="تطبيق لتسيير مؤسسة" textFill="WHITE">
+               <children>
+                        <Label layoutX="172.0" layoutY="20.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="63.0" prefWidth="312.0" text="تطبيق لتسيير مؤسسة" textFill="WHITE" AnchorPane.rightAnchor="20.0">
                             <font>
-                                <Font name="System Bold Italic" size="24.0" />
+                                <Font name="Algerian" size="24.0" />
                             </font>
                         </Label>
-                    </children>
+               </children>
                 </AnchorPane>
             </children>
         </HBox>
@@ -39,7 +43,7 @@
 <!--                <fx:define>
                     <Image fx:id="btnImage" url="images/image.png" />
                 </fx:define>-->
-                <JFXButton buttonType="RAISED" onAction="#actionAcceuil" prefHeight="53.0" prefWidth="124.0" ripplerFill="#2bee4c" styleClass="acceuilButton" text="الصفحة اارئيسية" >
+                <JFXButton buttonType="RAISED" onAction="#actionAcceuil" prefHeight="53.0" prefWidth="124.0" ripplerFill="#2bee4c" styleClass="acceuilButton" text="الصفحة اارئيسية">
                     
                 </JFXButton>
                 <JFXButton buttonType="RAISED" onAction="#actionProfil" prefHeight="53.0" prefWidth="124.0" ripplerFill="#2bee4c" styleClass="acceuilButton" text="تعريف الموظف" />

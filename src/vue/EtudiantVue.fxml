@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
@@ -16,7 +15,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="799.0" styleClass="label" stylesheets="@../css/style.css" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EtudiantController">
    <children>
-      <SplitPane dividerPositions="0.5804701627486437" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.6287625418060201" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
@@ -27,30 +26,40 @@
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="265.0" />
                     </columnConstraints>
                     <rowConstraints>
+                      <RowConstraints />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField fx:id="nom" GridPane.columnIndex="1" />
-                        <DatePicker fx:id="dateNaissance" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="lieuNaissance" prefHeight="25.0" prefWidth="279.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="cin" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField fx:id="niveauEtude" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <ComboBox fx:id="etablissement" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="212.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="الإسم الكامل" />
-                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="المستوى الدراسي" GridPane.rowIndex="4" />
-                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="تاريح الإزدياد" GridPane.rowIndex="1" />
-                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="مكان الإزدياد" GridPane.rowIndex="2" />
-                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="المؤسسة" GridPane.rowIndex="5" />
-                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="الرقم الوطني" GridPane.rowIndex="3" />
-                        <Button mnemonicParsing="false" onAction="#saveAction" prefHeight="25.0" prefWidth="95.0" styleClass="add" text="إضافة" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                        <Button mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="95.0" styleClass="update" text="تعديل" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                        <Button mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="95.0" styleClass="delete" text="حدف" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-                        <Button mnemonicParsing="false" onAction="#importM" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: orange;" styleClass="add" text="تحميل" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP" />
+                        <TextField fx:id="numInscription" nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <DatePicker fx:id="dateNaissance" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="lieuNaissance" prefHeight="31.0" prefWidth="279.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="cin" prefHeight="23.0" prefWidth="279.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="dernierNiveau" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="الإسم الكامل" GridPane.rowIndex="2" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="آخر مستوى" GridPane.rowIndex="5" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="تاريح الإزدياد" GridPane.rowIndex="3" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="مكان الإزدياد" GridPane.rowIndex="4" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="تاريخ المغادرة" GridPane.rowIndex="7" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="الرقم الوطني" GridPane.rowIndex="6" />
+                        <Button mnemonicParsing="false" onAction="#saveAction" prefHeight="25.0" prefWidth="95.0" styleClass="add" text="إضافة" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                        <Button mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="95.0" styleClass="update" text="تعديل" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP" />
+                        <Button mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="95.0" styleClass="delete" text="حدف" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="TOP" />
+                        <Button mnemonicParsing="false" onAction="#importM" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: orange;" styleClass="add" text="تحميل" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="TOP" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="64.0" text="رقم التسجيل" GridPane.rowIndex="1" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="رقم الملف" GridPane.rowIndex="9" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" text="قرار مجلس القسم" GridPane.rowIndex="8" />
+                        <TextField fx:id="numDossier" prefHeight="23.0" prefWidth="279.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <TextField fx:id="decision" prefHeight="23.0" prefWidth="279.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <TextField fx:id="nom" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <DatePicker fx:id="dateSortie" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -62,13 +71,15 @@
                <children>
                   <TableView fx:id="etudiants" layoutX="14.0" layoutY="-2.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="cId" prefWidth="75.0" text="الرقم" />
+                      <TableColumn fx:id="cNumInscription" prefWidth="75.0" text="رقم التسجيل" />
                       <TableColumn fx:id="cNom" prefWidth="75.0" text="الإسم الكامل" />
-                        <TableColumn fx:id="cDateNaissance" prefWidth="75.0" text="تاريخ الإزدياد" />
+                        <TableColumn fx:id="cDateNaissance" prefWidth="75.0" text="تاريح الإزدياد" />
                         <TableColumn fx:id="cLieuNaissance" prefWidth="75.0" text="مكان الإزدياد" />
+                        <TableColumn fx:id="cDernierNiveau" prefWidth="75.0" text="آخر مستوى" />
                         <TableColumn fx:id="cCin" prefWidth="75.0" text="الرقم الوطني" />
-                        <TableColumn fx:id="cNiveauEtude" prefWidth="75.0" text="المستوى الدراسي" />
-                        <TableColumn fx:id="cEtablissement" prefWidth="75.0" text="المؤسسة" />
+                        <TableColumn fx:id="cDateSortie" prefWidth="75.0" text="تاريخ المغادرة" />
+                        <TableColumn fx:id="cDecision" prefWidth="75.0" text="قرار مجلس القسم" />
+                        <TableColumn fx:id="cNumDossier" prefWidth="75.0" text="رقم الملف" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

@@ -24,36 +24,46 @@ public class Etudiant {
     @Id
     @GeneratedValue
     private int id;
+    private String numInscription;
     private String nomComplet;
-    private String lieuNaissance;
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
+    private String lieuNaissance;
+    private String dernierNiveau;
     @Column(name = "cin", unique = true)
     private String cin;
-    private String niveauEtude;
-    @ManyToOne
-    private Etablissement etablissement;
+    @Temporal(TemporalType.DATE)
+    private Date dateSortie;
+    private String decision;
+    private int numDossier;
+ 
 
     public Etudiant() {
     }
 
-    public Etudiant(int id, String nomComplet, String lieuNaissance, Date dateNaissance, String cin, String niveauEtude, Etablissement etablissement) {
+    public Etudiant(int id, String numInscription, String nomComplet, Date dateNaissance, String lieuNaissance, String dernierNiveau, String cin, Date dateSortie, String decision, int numDossier) {
         this.id = id;
+        this.numInscription = numInscription;
         this.nomComplet = nomComplet;
         this.dateNaissance = dateNaissance;
         this.lieuNaissance = lieuNaissance;
+        this.dernierNiveau = dernierNiveau;
         this.cin = cin;
-        this.niveauEtude = niveauEtude;
-        this.etablissement = etablissement;
+        this.dateSortie = dateSortie;
+        this.decision = decision;
+        this.numDossier = numDossier;
     }
 
-    public Etudiant(String nomComplet, String lieuNaissance, Date dateNaissance, String cin, String niveauEtude, Etablissement etablissement) {
+    public Etudiant(String numInscription, String nomComplet, Date dateNaissance, String lieuNaissance, String dernierNiveau, String cin, Date dateSortie, String decision, int numDossier) {
+        this.numInscription = numInscription;
         this.nomComplet = nomComplet;
         this.dateNaissance = dateNaissance;
         this.lieuNaissance = lieuNaissance;
+        this.dernierNiveau = dernierNiveau;
         this.cin = cin;
-        this.niveauEtude = niveauEtude;
-        this.etablissement = etablissement;
+        this.dateSortie = dateSortie;
+        this.decision = decision;
+        this.numDossier = numDossier;
     }
 
     public Etudiant(int id, String nomComplet, Date dateNaissance, String cin) {
@@ -62,6 +72,7 @@ public class Etudiant {
         this.dateNaissance = dateNaissance;
         this.cin = cin;
     }
+    
 
     public int getId() {
         return id;
@@ -69,6 +80,14 @@ public class Etudiant {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getNumInscription() {
+        return numInscription;
+    }
+
+    public void setNumInscription(String numInscription) {
+        this.numInscription = numInscription;
     }
 
     public String getNomComplet() {
@@ -95,6 +114,14 @@ public class Etudiant {
         this.lieuNaissance = lieuNaissance;
     }
 
+    public String getDernierNiveau() {
+        return dernierNiveau;
+    }
+
+    public void setDernierNiveau(String dernierNiveau) {
+        this.dernierNiveau = dernierNiveau;
+    }
+
     public String getCin() {
         return cin;
     }
@@ -103,20 +130,30 @@ public class Etudiant {
         this.cin = cin;
     }
 
-    public String getNiveauEtude() {
-        return niveauEtude;
+    public Date getDateSortie() {
+        return dateSortie;
     }
 
-    public void setNiveauEtude(String niveauEtude) {
-        this.niveauEtude = niveauEtude;
+    public void setDateSortie(Date dateSortie) {
+        this.dateSortie = dateSortie;
     }
 
-    public Etablissement getEtablissement() {
-        return etablissement;
+    public String getDecision() {
+        return decision;
     }
 
-    public void setEtablissement(Etablissement etablissement) {
-        this.etablissement = etablissement;
+    public void setDecision(String decision) {
+        this.decision = decision;
     }
 
+    public int getNumDossier() {
+        return numDossier;
+    }
+
+    public void setNumDossier(int numDossier) {
+        this.numDossier = numDossier;
+    }
+    
+    
+  
 }

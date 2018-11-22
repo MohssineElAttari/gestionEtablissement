@@ -55,7 +55,7 @@ public class LoginController implements Initializable {
                 Node source = (Node) event.getSource();
                 dialogStage = (Stage) source.getScene().getWindow();
                 dialogStage.close();
-                scene = new Scene(FXMLLoader.load(getClass().getResource(e.getProfil().getId() == 1 ? "/vue/MenuAdminVue.fxml" : "/vue/MenuSpectateurVue.fxml")));
+                scene = new Scene(FXMLLoader.load(getClass().getResource(e.getProfil().getId() == 1 ? "/vue/MenuAdminVue.fxml" : "/vue/MenuInspecteurVue.fxml")));
                 dialogStage.setScene(scene);
                 dialogStage.show();
             }

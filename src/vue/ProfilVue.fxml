@@ -40,11 +40,11 @@
                               <Insets right="15.0" />
                            </padding>
                         </Label>
-                        <TextField fx:id="code" nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1" />
-                        <TextField fx:id="libelle" nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button mnemonicParsing="false" onAction="#saveAction" prefHeight="25.0" prefWidth="114.0" styleClass="update" text="إضافة" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <TextField fx:id="code" nodeOrientation="RIGHT_TO_LEFT" prefHeight="39.0" prefWidth="206.0" GridPane.columnIndex="1" />
+                        <TextField fx:id="libelle" nodeOrientation="RIGHT_TO_LEFT" prefHeight="37.0" prefWidth="206.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#saveAction" prefHeight="25.0" prefWidth="114.0" styleClass="add" text="إضافة" GridPane.halignment="CENTER" />
                         <Button mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="114.0" styleClass="delete" text="حذف" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <Button mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="114.0" styleClass="add" text="تعديل" GridPane.halignment="CENTER" />
+                        <Button mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="114.0" styleClass="update" text="تعديل" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </children>

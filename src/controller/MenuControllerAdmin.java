@@ -28,8 +28,8 @@ public class MenuControllerAdmin implements Initializable {
     @FXML
     private AnchorPane pane;
 
-    @FXML
-    private ImageView logo1;
+//    @FXML
+//    private ImageView logo1;
 
     @FXML
     private void actionProfil(ActionEvent event) throws IOException {
@@ -76,7 +76,7 @@ public class MenuControllerAdmin implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        //logo1.setImage(new Image("img/ministere.jpg", 200, 88, false, true));
+       // logo1.setImage(new Image("img/ministere.jpg", 200, 88, false, true));
     }
 
 }
