@@ -3,6 +3,10 @@ package controller;
 import classes.Etablissement;
 import classes.Etudiant;
 import classes.Profil;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -18,8 +22,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+//import javafx.scene.control.Alert;
+//import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
@@ -28,6 +32,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import services.EtablissementService;
 import services.EtudiantService;
 import services.ProfilService;
@@ -75,6 +85,54 @@ public class EtudiantController implements Initializable {
     private TableColumn<Etablissement, String> cEtablissement;
 
     @FXML
+    private void importM(ActionEvent event) throws FileNotFoundException, IOException {
+        File myFile = new File("C:\\ARCHIVESBIR.xlsx");
+        // chooseFile
+		FileInputStream fis = new FileInputStream(myFile);
+
+		// Finds the workbook instance for XLSX file
+		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);
+
+		// Return first sheet from the XLSX workbook
+		XSSFSheet mySheet = myWorkBook.getSheetAt(1);
+		
+		//XSSFRow row = mySheet.getRow(1);
+		//XSSFCell cell = row.getCell(2);
+		
+		for(int i=1;i<mySheet.getLastRowNum();i++) {
+			XSSFRow rowx = mySheet.getRow(i);
+			//for(int j=1;j<rowx.getLastCellNum();j++) {
+			XSSFCell cell2 = rowx.getCell(2);
+			if(cell2 == null || cell2.getCellType() == CellType.BLANK) {
+				continue;
+			}else {
+				XSSFCell cell1 = rowx.getCell(1);
+				System.out.print(cell1.getStringCellValue()+"\t");
+				System.out.print(cell2.getStringCellValue().toString()+"\t");
+				XSSFCell cell3 = rowx.getCell(3);
+				System.out.print(cell3.getNumericCellValue()+"\t");
+				XSSFCell cell4 = rowx.getCell(4);
+				System.out.print(cell4.getStringCellValue().toString()+"\t");
+				XSSFCell cell5 = rowx.getCell(5);
+				System.out.print(cell5.getStringCellValue().toString()+"\t");
+				XSSFCell cell6 = rowx.getCell(6);
+				System.out.print(cell6.getNumericCellValue()+"\t");
+				XSSFCell cell7 = rowx.getCell(7);
+				System.out.print(cell7.getNumericCellValue()+"\t");
+				XSSFCell cell8 = rowx.getCell(8);
+				System.out.print(cell8.getStringCellValue().toString()+"\t");
+				XSSFCell cell9 = rowx.getCell(9);
+				System.out.print(cell9.getNumericCellValue());
+				System.out.println("");
+                                
+                                // es.create(.....);
+			}
+				
+			//}
+		}
+
+    }
+    @FXML
     private void saveAction(ActionEvent event) {
         String n = nom.getText().toString();
         LocalDate d = dateNaissance.getValue();
@@ -101,32 +159,32 @@ public class EtudiantController implements Initializable {
     }
     @FXML
     private void delete() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("تأكيد");
-        alert.setHeaderText("تأكيد الحدف");
-        alert.setContentText("هل أنت متأكد من إزالة هدا الطالب ؟");
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
+//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//        alert.setTitle("تأكيد");
+//        alert.setHeaderText("تأكيد الحدف");
+//        alert.setContentText("هل أنت متأكد من إزالة هدا الطالب ؟");
+//
+//        Optional<ButtonType> result = alert.showAndWait();
+//        if (result.get() == ButtonType.OK) {
             es.delete(es.findById(index));
             etudiantList.clear();
             load();
             clean();
-        } else {
-            // ... user chose CANCEL or closed the dialog
-        }
+//        } else {
+//            // ... user chose CANCEL or closed the dialog
+//        }
 
     }
 
     @FXML
     private void update() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("تأكيد");
-        alert.setHeaderText(" تأكيد التعديل ؟");
-        alert.setContentText("هل أنت متأكد من تعديل معلومات هدا الطالب");
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
+//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//        alert.setTitle("تأكيد");
+//        alert.setHeaderText(" تأكيد التعديل ؟");
+//        alert.setContentText("هل أنت متأكد من تعديل معلومات هدا الطالب");
+//
+//        Optional<ButtonType> result = alert.showAndWait();
+//        if (result.get() == ButtonType.OK) {
             Etudiant e = es.findById(index);
             e.setNomComplet(nom.getText());
             Instant instant = Instant.from(dateNaissance.getValue().atStartOfDay(ZoneId.systemDefault()));
@@ -143,7 +201,7 @@ public class EtudiantController implements Initializable {
             clean();
         
     }
-    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         load();

@@ -1,0 +1,41 @@
+#bacgroundLogin{
+    -fx-background-color: #333;
+}
+
+#bacgroundLogin TextField ,
+#bacgroundLogin PasswordField
+{
+    -fx-background-radius: 10;
+}
+.acceuilButton  {
+    -fx-border-width: 0 0 1 0 ; -fx-border-color: #2bee4c;
+   -fx-font-size: 15;
+   
+    
+}
+.label{
+    -fx-font-size: 16;
+    
+}
+.add{
+    -fx-background-color:#1D90EA;
+     -fx-background-radius: 10;
+     -fx-pref-height:40;
+     -fx-pref-width:140;  
+     -fx-font-size: 16;
+}
+.update{
+    -fx-background-color:#56E11E;
+     -fx-background-radius: 10;
+     -fx-pref-height:40;
+     -fx-pref-width:140;
+     -fx-font-size: 16;
+}
+.delete{
+    -fx-background-color:#EE1A41;
+    -fx-background-radius: 10;
+     -fx-pref-height:40;
+     -fx-pref-width:140;
+     -fx-font-size: 16;
+}
+

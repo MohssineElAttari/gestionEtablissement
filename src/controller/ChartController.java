@@ -48,8 +48,7 @@ public class ChartController implements Initializable {
 //        final PieChart pChart = new PieChart(pieChartData);
 //    }
 
-    @FXML
-    private PieChart pieChart;
+   
 
     @FXML
     private CategoryAxis xAxes = new CategoryAxis();
@@ -92,13 +91,8 @@ public class ChartController implements Initializable {
 //                }
 //            });
 //        }
+
         setChart();
-        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-
-        for (Profil p : ps.findAll()) {
-            pieChartData.add(new PieChart.Data(p.getLibelle(), es.CountEmployesByProfilName(p.getLibelle())));
-
-        }
-        pieChart.setData(pieChartData);
+      
     }
 }

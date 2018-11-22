@@ -10,8 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+//import javafx.scene.control.Alert;
+//import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -49,9 +49,9 @@ public class LoginController implements Initializable {
         try {
             Employe e = es.findByEmail(username.getText());
             if (e == null) {
-                infoBox("Enter Correct Email and Password", "Failed", null);
+//                infoBox("Enter Correct Email and Password", "Failed", null);
             } else {
-                infoBox("Login Successfull", "Success", null);
+//                infoBox("Login Successfull", "Success", null);
                 Node source = (Node) event.getSource();
                 dialogStage = (Stage) source.getScene().getWindow();
                 dialogStage.close();
@@ -70,11 +70,11 @@ public class LoginController implements Initializable {
         //logo.setImage(new Image("img/boss.png", 130, 78, false, true));
     }
 
-    public static void infoBox(String infoMessage, String titleBar, String headerMessage) {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle(titleBar);
-        alert.setHeaderText(headerMessage);
-        alert.setContentText(infoMessage);
-        alert.showAndWait();
-    }
+//    public static void infoBox(String infoMessage, String titleBar, String headerMessage) {
+//        Alert alert = new Alert(AlertType.INFORMATION);
+//        alert.setTitle(titleBar);
+//        alert.setHeaderText(headerMessage);
+//        alert.setContentText(infoMessage);
+//        alert.showAndWait();
+//    }
 }

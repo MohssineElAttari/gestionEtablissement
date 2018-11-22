@@ -19,7 +19,7 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author mohss
  */
-public class MenuSpectateurController implements Initializable {
+public class MenuInspecteurController implements Initializable {
 
     @FXML
     private AnchorPane mainpane;

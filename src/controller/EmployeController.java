@@ -23,8 +23,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+//import javafx.scene.control.Alert;
+//import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
@@ -128,20 +128,20 @@ public class EmployeController implements Initializable {
 
     @FXML
     private void delete(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("تأكيد");
-        alert.setHeaderText("تأكيد الحدف");
-        alert.setContentText("هل أنت متأكد من إزالة هدا الطالب ؟");
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
+//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//        alert.setTitle("تأكيد");
+//        alert.setHeaderText("تأكيد الحدف");
+//        alert.setContentText("هل أنت متأكد من إزالة هدا الطالب ؟");
+//
+//        Optional<ButtonType> result = alert.showAndWait();
+//        if (result.get() == ButtonType.OK) {
             es.delete(es.findById(index));
             employeList.clear();
             load();
 
-        } else {
-
-        }
+//        } else {
+//
+//        }
     }
 
     @FXML

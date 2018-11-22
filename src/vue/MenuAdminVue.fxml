@@ -1,23 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="576.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuControllerAdmin">
-   <children>
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: red;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <AnchorPane fx:id="mainpane" layoutX="152.0" layoutY="122.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightblue;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="101.0" />
-      <VBox layoutX="10.0" layoutY="10.0" prefHeight="476.0" prefWidth="124.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
-         <children>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#actionProfil" prefHeight="43.0" prefWidth="124.0" text="تعريف الموظف" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#actionEtudiant" prefHeight="43.0" prefWidth="124.0" text="الطلاب" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#actionEtablissement" prefHeight="43.0" prefWidth="124.0" text="المؤسسة" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#actionEmploye" prefHeight="43.0" prefWidth="124.0" text="الموظفون" />
-            <Button layoutX="10.0" layoutY="139.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#actionChart" prefHeight="43.0" prefWidth="124.0" text="الإحصائيات" />
-            <Button layoutX="10.0" layoutY="182.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="43.0" prefWidth="124.0" text="Button" />
-         </children>
-      </VBox>
-   </children>
+<AnchorPane id="AnchorPane" prefHeight="576.0" prefWidth="726.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuControllerAdmin">
+    <children>
+        <AnchorPane fx:id="mainpane" layoutX="152.0" layoutY="122.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightblue;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="89.0">
+            <children>
+                <AnchorPane fx:id="pane" prefHeight="475.0" prefWidth="601.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            </children>
+        </AnchorPane>
+        <HBox prefHeight="88.0" prefWidth="726.0" style="-fx-background-color: #16345B;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <AnchorPane prefHeight="88.0" prefWidth="726.0">
+                    <children>
+                        <ImageView fx:id="logo1" fitHeight="88.0" fitWidth="200.0" layoutX="526.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                            <cursor>
+                                <Cursor fx:constant="DEFAULT" />
+                            </cursor>
+                        </ImageView>
+                        <Label layoutX="190.0" layoutY="14.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="63.0" prefWidth="312.0" text="تطبيق لتسيير مؤسسة" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold Italic" size="24.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+            </children>
+        </HBox>
+        <VBox layoutX="10.0" layoutY="10.0" prefHeight="476.0" prefWidth="124.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
+            <children>
+<!--                <fx:define>
+                    <Image fx:id="btnImage" url="images/image.png" />
+                </fx:define>-->
+                <JFXButton buttonType="RAISED" onAction="#actionAcceuil" prefHeight="53.0" prefWidth="124.0" ripplerFill="#2bee4c" styleClass="acceuilButton" text="الصفحة اارئيسية" >
+                    
+                </JFXButton>
+                <JFXButton buttonType="RAISED" onAction="#actionProfil" prefHeight="53.0" prefWidth="124.0" ripplerFill="#2bee4c" styleClass="acceuilButton" text="تعريف الموظف" />
+                <JFXButton buttonType="RAISED" onAction="#actionEtudiant" prefHeight="53.0" prefWidth="124.0" ripplerFill="#2bee4c" styleClass="acceuilButton" text="الطلاب" />
+                <JFXButton buttonType="RAISED" onAction="#actionEtablissement" prefHeight="53.0" prefWidth="124.0" ripplerFill="#2bee4c" styleClass="acceuilButton" text="المؤسسة" />
+                <JFXButton buttonType="RAISED" onAction="#actionEmploye" prefHeight="53.0" prefWidth="124.0" ripplerFill="#2bee4c" styleClass="acceuilButton" text="الموظفون" />
+                <JFXButton buttonType="RAISED" onAction="#actionChart" prefHeight="53.0" prefWidth="124.0" ripplerFill="#2bee4c" styleClass="acceuilButton" text="الإحصائيات" />
+                <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="275.0" onAction="#actionChartPie" prefHeight="53.0" prefWidth="124.0" ripplerFill="#2bee4c" styleClass="acceuilButton" text="الإحصائيات" />
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="600.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfilController">
+<AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="600.0" stylesheets="@../css/style.css" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfilController">
    <children>
       <SplitPane dividerPositions="0.5" layoutX="194.0" layoutY="131.0" nodeOrientation="RIGHT_TO_LEFT" orientation="VERTICAL" prefHeight="422.0" prefWidth="600.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
         <items>
@@ -42,9 +42,9 @@
                         </Label>
                         <TextField fx:id="code" nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1" />
                         <TextField fx:id="libelle" nodeOrientation="RIGHT_TO_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button mnemonicParsing="false" onAction="#saveAction" prefHeight="25.0" prefWidth="114.0" text="إضافة" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <Button mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="114.0" text="حذف" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <Button mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="114.0" text="تعديل" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#saveAction" prefHeight="25.0" prefWidth="114.0" styleClass="update" text="إضافة" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="114.0" styleClass="delete" text="حذف" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="114.0" styleClass="add" text="تعديل" GridPane.halignment="CENTER" />
                      </children>
                   </GridPane>
                </children>

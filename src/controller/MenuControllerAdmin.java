@@ -12,6 +12,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -23,6 +25,11 @@ public class MenuControllerAdmin implements Initializable {
 
     @FXML
     private AnchorPane mainpane;
+    @FXML
+    private AnchorPane pane;
+
+    @FXML
+    private ImageView logo1;
 
     @FXML
     private void actionProfil(ActionEvent event) throws IOException {
@@ -54,9 +61,22 @@ public class MenuControllerAdmin implements Initializable {
         mainpane.getChildren().setAll(anc);
     }
 
+    @FXML
+    private void actionAcceuil(ActionEvent event) throws IOException {
+        // AnchorPane anc = FXMLLoader.load(getClass().getResource("/vue/ChartVue.fxml"));
+        mainpane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void actionChartPie(ActionEvent event) throws IOException {
+         AnchorPane anc = FXMLLoader.load(getClass().getResource("/vue/PieChartVue.fxml"));
+        mainpane.getChildren().setAll(anc);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
+        //logo1.setImage(new Image("img/ministere.jpg", 200, 88, false, true));
     }
 
 }
