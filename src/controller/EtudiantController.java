@@ -16,12 +16,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.prefs.Preferences;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 //import javafx.scene.control.Alert;
 //import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
@@ -32,6 +35,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -49,10 +53,12 @@ import services.ProfilService;
  */
 public class EtudiantController implements Initializable {
 
+    Preferences userPreferences = Preferences.userRoot();
+    String info = userPreferences.get("idEmploye", "-1");
+    
     EtudiantService es = new EtudiantService();
-
     ObservableList<Etudiant> etudiantList = FXCollections.observableArrayList();
-
+    File myFile;
     Date dt = new Date();
     Date dt1 = new Date();
     private static int index;
@@ -107,8 +113,16 @@ public class EtudiantController implements Initializable {
 
     @FXML
     private void importM(ActionEvent event) throws FileNotFoundException, IOException {
-        File myFile = new File("C:\\ARCHIVESBIR.xlsx");
-        // chooseFile
+        FileChooser fileChooser = new FileChooser();
+
+        File selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile != null) {
+            myFile = new File(selectedFile.getAbsolutePath());
+        } else {
+
+        }
+
         FileInputStream fis = new FileInputStream(myFile);
 
         // Finds the workbook instance for XLSX file
@@ -128,27 +142,25 @@ public class EtudiantController implements Initializable {
             } else {
                 XSSFCell cell1 = rowx.getCell(1);
                 String num = cell1.getStringCellValue();
-                String nomc = cell2.getStringCellValue().toString();
+                String nomc = cell2.getStringCellValue();
                 XSSFCell cell3 = rowx.getCell(3);
                 Date dateN = cell3.getDateCellValue();
                 XSSFCell cell4 = rowx.getCell(4);
-                String lieuN = cell4.getStringCellValue().toString();
+                String lieuN = cell4.getStringCellValue();
                 XSSFCell cell5 = rowx.getCell(5);
-                cell5.getStringCellValue().toString();
+                String dernierN = cell5.getStringCellValue();
                 XSSFCell cell6 = rowx.getCell(6);
-                String dernierN = cell6.getErrorCellString();
+                int cinE = (int) cell6.getNumericCellValue();
                 XSSFCell cell7 = rowx.getCell(7);
-                String cin = cell7.getErrorCellString();
+                Date dateS = cell7.getDateCellValue();
                 XSSFCell cell8 = rowx.getCell(8);
-                Date dateSortie = cell8.getDateCellValue();
+                String dec = cell8.getStringCellValue();
                 XSSFCell cell9 = rowx.getCell(9);
-                int numDossier = Integer.parseInt(cell9.getStringCellValue());
-                es.create(new Etudiant(num, nomc, dateSortie, dernierN , lieuN, cin, dateSortie, cin, numDossier));
+                int numD = (int) cell9.getNumericCellValue();
+                es.create(new Etudiant(num, nomc, dateN, lieuN, dernierN, cinE, dateS, dec, numD));
+                load();
 
-            
             }
-
-            //}
         }
 
     }
@@ -161,7 +173,7 @@ public class EtudiantController implements Initializable {
         Instant instant = Instant.from(d.atStartOfDay(ZoneId.systemDefault()));
         dt = Date.from(instant);
         String l = lieuNaissance.getText().toString();
-        String c = cin.getText().toString();
+        int c = Integer.parseInt(cin.getText().toString());
         String der = dernierNiveau.getText().toString();
         String num = numDossier.getText().toString();
         LocalDate d1 = dateSortie.getValue();
@@ -171,8 +183,8 @@ public class EtudiantController implements Initializable {
 
         es.create(new Etudiant(i, n, dt, l, der, c, dt1, dec, Integer.parseInt(num)));
 
-//        load();
-//        clean();
+        load();
+        clean();
     }
 
 //    public void fillComboBox() {
@@ -184,56 +196,54 @@ public class EtudiantController implements Initializable {
 //
     @FXML
     private void delete() {
-////        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-////        alert.setTitle("تأكيد");
-////        alert.setHeaderText("تأكيد الحدف");
-////        alert.setContentText("هل أنت متأكد من إزالة هدا الطالب ؟");
-////
-////        Optional<ButtonType> result = alert.showAndWait();
-////        if (result.get() == ButtonType.OK) {
-        es.delete(es.findById(index));
-        etudiantList.clear();
-        load();
-        clean();
-////        } else {
-////            // ... user chose CANCEL or closed the dialog
-////        }
-//
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("تأكيد");
+        alert.setHeaderText("تأكيد الحدف");
+        alert.setContentText("هل أنت متأكد من إزالة هدا الطالب ؟");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            es.delete(es.findById(index));
+            etudiantList.clear();
+            load();
+            clean();
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+
     }
-//
 
     @FXML
     private void update() {
-////        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-////        alert.setTitle("تأكيد");
-////        alert.setHeaderText(" تأكيد التعديل ؟");
-////        alert.setContentText("هل أنت متأكد من تعديل معلومات هدا الطالب");
-////
-////        Optional<ButtonType> result = alert.showAndWait();
-////        if (result.get() == ButtonType.OK) {
-        Etudiant e = es.findById(index);
-        e.setNumInscription(numInscription.getText());
-        e.setNomComplet(nom.getText());
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("تأكيد");
+        alert.setHeaderText(" تأكيد التعديل ؟");
+        alert.setContentText("هل أنت متأكد من تعديل معلومات هدا الطالب");
 
-        Instant instant = Instant.from(dateNaissance.getValue().atStartOfDay(ZoneId.systemDefault()));
-        dt = Date.from(instant);
-        Instant instant2 = Instant.from(dateNaissance.getValue().atStartOfDay(ZoneId.systemDefault()));
-        dt1 = Date.from(instant2);
-        e.setDateNaissance(dt);
-        e.setLieuNaissance(lieuNaissance.getText());
-        e.setCin(cin.getText());
-        e.setDernierNiveau(dernierNiveau.getText());
-        e.setDateSortie(dt1);
-        e.setDecision(decision.getText());
-        e.setNumDossier(Integer.parseInt(numDossier.getText()));
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            Etudiant e = es.findById(index);
+            e.setNumInscription(numInscription.getText());
+            e.setNomComplet(nom.getText());
 
-        es.update(e);
-        etudiantList.clear();
-        load();
-        clean();
-//
+            Instant instant = Instant.from(dateNaissance.getValue().atStartOfDay(ZoneId.systemDefault()));
+            dt = Date.from(instant);
+            Instant instant2 = Instant.from(dateNaissance.getValue().atStartOfDay(ZoneId.systemDefault()));
+            dt1 = Date.from(instant2);
+            e.setDateNaissance(dt);
+            e.setLieuNaissance(lieuNaissance.getText());
+            e.setCin(Integer.parseInt(cin.getText()));
+            e.setDernierNiveau(dernierNiveau.getText());
+            e.setDateSortie(dt1);
+            e.setDecision(decision.getText());
+            e.setNumDossier(Integer.parseInt(numDossier.getText()));
+
+            es.update(e);
+            etudiantList.clear();
+            load();
+            clean();
+        }
     }
-//
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -247,7 +257,7 @@ public class EtudiantController implements Initializable {
                 numInscription.setText(item.getNumInscription());
                 nom.setText(item.getNomComplet());
                 lieuNaissance.setText(item.getLieuNaissance());
-                cin.setText(item.getCin());
+                cin.setText(String.valueOf(item.getCin()));
                 decision.setText(item.getDecision());
 
                 numDossier.setText(String.valueOf(item.getNumDossier()));
@@ -290,7 +300,6 @@ public class EtudiantController implements Initializable {
 
         cNumInscription.setCellValueFactory(new PropertyValueFactory<>("numInscription"));
         cNom.setCellValueFactory(new PropertyValueFactory<>("nomComplet"));
-
         cDateNaissance.setCellValueFactory(new PropertyValueFactory<>("dateNaissance"));
         cLieuNaissance.setCellValueFactory(new PropertyValueFactory<>("lieuNaissance"));
         cCin.setCellValueFactory(new PropertyValueFactory<>("cin"));

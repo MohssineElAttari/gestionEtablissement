@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import classes.Employe;
@@ -17,12 +12,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.prefs.Preferences;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 //import javafx.scene.control.Alert;
 //import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
@@ -45,12 +43,18 @@ import services.ProfilService;
  */
 public class EmployeController implements Initializable {
 
+//    Preferences userPreferences = Preferences.userRoot();
+//    String idProfile = userPreferences.get("idProfile", "-1");
+    Preferences preference = Preferences.userRoot();
+    int idEmp = Integer.parseInt(preference.get("idEmploye", "-1"));
     EmployeService es = new EmployeService();
-    EtablissementService ets = new EtablissementService();
+    Employe e = es.findById(idEmp);
     ProfilService ps = new ProfilService();
     ObservableList<Employe> employeList = FXCollections.observableArrayList();
     ObservableList<Profil> profilList = FXCollections.observableArrayList();
-    ObservableList<Etablissement> etablissements = FXCollections.observableArrayList();
+
+//    ObservableList<Etablissement> etablissements = FXCollections.observableArrayList();
+    //Employe e = es.findById(Integer.parseInt(idProfile));
     private static int index;
 
     Date dt1 = new Date();
@@ -70,8 +74,8 @@ public class EmployeController implements Initializable {
     private DatePicker dateEmbauche;
     @FXML
     private ComboBox<Profil> profil;
-    @FXML
-    private ComboBox<Etablissement> etablissement;
+//    @FXML
+//    private ComboBox<Etablissement> etablissement;
     @FXML
     private TableView employes;
     @FXML
@@ -104,8 +108,9 @@ public class EmployeController implements Initializable {
         dt1 = Date.from(instant);
         Instant instant2 = Instant.from(de.atStartOfDay(ZoneId.systemDefault()));
         dt2 = Date.from(instant2);
+        Etablissement e1 = this.e.getEtablissement();
         Profil pr = profil.getValue();
-        Etablissement e1 = etablissement.getValue();
+//        Etablissement e1 = etablissement.getValue();
         es.create(new Employe(n, p, e, pa, dt1, dt2, pr, e1));
         load();
         clean();
@@ -119,29 +124,29 @@ public class EmployeController implements Initializable {
         profil.setItems(profilList);
     }
 
-    public void fillComboBoxEtablissement() {
-        for (Etablissement et : ets.findAll()) {
-            etablissements.add(et);
-        }
-        etablissement.setItems(etablissements);
-    }
-
+//    public void fillComboBoxEtablissement() {
+//        for (Etablissement et : ets.findAll()) {
+//            etablissements.add(et);
+//        }
+//        etablissement.setItems(etablissements);
+//    }
     @FXML
     private void delete(ActionEvent event) {
-//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//        alert.setTitle("تأكيد");
-//        alert.setHeaderText("تأكيد الحدف");
-//        alert.setContentText("هل أنت متأكد من إزالة هدا الطالب ؟");
-//
-//        Optional<ButtonType> result = alert.showAndWait();
-//        if (result.get() == ButtonType.OK) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("تأكيد");
+        alert.setHeaderText("تأكيد الحدف");
+        alert.setContentText("هل أنت متأكد من إزالة هدا الطالب ؟");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
             es.delete(es.findById(index));
             employeList.clear();
             load();
+            clean();
 
-//        } else {
-//
-//        }
+        } else {
+
+        }
     }
 
     @FXML
@@ -157,8 +162,7 @@ public class EmployeController implements Initializable {
         dt2 = Date.from(instant2);
         e.setDateEmbauche(dt2);
         e.setProfil(profil.getValue());
-        e.setEtablissement(etablissement.getValue());
-        es.update(e);
+//        e.setEtablissement(etablissement.getValue());
         employeList.clear();
         load();
         clean();
@@ -177,7 +181,7 @@ public class EmployeController implements Initializable {
                 prenom.setText(item.getPrenom());
                 email.setText(item.getEmail());
                 profil.setValue(item.getProfil());
-                etablissement.setValue(item.getEtablissement());
+//                etablissement.setValue(item.getEtablissement());
                 index = item.getId();
 
                 Date date1 = item.getDateNaissance();
@@ -203,18 +207,18 @@ public class EmployeController implements Initializable {
         prenom.setText("");
         email.setText("");
         password.setText("");
-        dateNaissance.setValue(LocalDate.now());
-        dateEmbauche.setValue(LocalDate.now());
+        dateNaissance.setValue(null);
+        dateEmbauche.setValue(null);
         profil.setValue(null);
-        etablissement.setValue(null);
+//        etablissement.setValue(null);
     }
 
     public void load() {
         employeList.clear();
-        etablissements.clear();
+//        etablissements.clear();
         profilList.clear();
         fillComboBox();
-        fillComboBoxEtablissement();
+//        fillComboBoxEtablissement();
         cId.setCellValueFactory(new PropertyValueFactory<>("id"));
         cNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         cPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));

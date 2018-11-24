@@ -59,9 +59,7 @@ public class RechercheController implements Initializable {
                         return true;
                     }
                     String lowerCaseFilter = newValue.toLowerCase();
-                    if (etudiant.getCin().toLowerCase().contains(lowerCaseFilter)) {
-                        return true;
-                    } else if (etudiant.getNomComplet().toLowerCase().contains(lowerCaseFilter)) {
+                    if (etudiant.getNomComplet().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
                     }
                     return false;

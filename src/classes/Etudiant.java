@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package classes;
 
 import java.util.Date;
@@ -24,14 +20,14 @@ public class Etudiant {
     @Id
     @GeneratedValue
     private int id;
+    @Column(name = "numInscription", unique = true)
     private String numInscription;
     private String nomComplet;
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
     private String lieuNaissance;
     private String dernierNiveau;
-    @Column(name = "cin", unique = true)
-    private String cin;
+    private int cin;
     @Temporal(TemporalType.DATE)
     private Date dateSortie;
     private String decision;
@@ -41,7 +37,7 @@ public class Etudiant {
     public Etudiant() {
     }
 
-    public Etudiant(int id, String numInscription, String nomComplet, Date dateNaissance, String lieuNaissance, String dernierNiveau, String cin, Date dateSortie, String decision, int numDossier) {
+    public Etudiant(int id, String numInscription, String nomComplet, Date dateNaissance, String lieuNaissance, String dernierNiveau, int cin, Date dateSortie, String decision, int numDossier) {
         this.id = id;
         this.numInscription = numInscription;
         this.nomComplet = nomComplet;
@@ -54,7 +50,7 @@ public class Etudiant {
         this.numDossier = numDossier;
     }
 
-    public Etudiant(String numInscription, String nomComplet, Date dateNaissance, String lieuNaissance, String dernierNiveau, String cin, Date dateSortie, String decision, int numDossier) {
+    public Etudiant(String numInscription, String nomComplet, Date dateNaissance, String lieuNaissance, String dernierNiveau, int cin, Date dateSortie, String decision, int numDossier) {
         this.numInscription = numInscription;
         this.nomComplet = nomComplet;
         this.dateNaissance = dateNaissance;
@@ -66,7 +62,7 @@ public class Etudiant {
         this.numDossier = numDossier;
     }
 
-    public Etudiant(int id, String nomComplet, Date dateNaissance, String cin) {
+    public Etudiant(int id, String nomComplet, Date dateNaissance, int cin) {
         this.id = id;
         this.nomComplet = nomComplet;
         this.dateNaissance = dateNaissance;
@@ -122,11 +118,11 @@ public class Etudiant {
         this.dernierNiveau = dernierNiveau;
     }
 
-    public String getCin() {
+    public int getCin() {
         return cin;
     }
 
-    public void setCin(String cin) {
+    public void setCin(int cin) {
         this.cin = cin;
     }
 
