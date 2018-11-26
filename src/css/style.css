@@ -8,14 +8,16 @@
     -fx-background-radius: 10;
 }
 .acceuilButton  {
-    -fx-border-width: 0 0 1 0 ; -fx-border-color: #2bee4c;
-   -fx-font-size: 15;
-   
-    
+    -fx-border-width: 0 0 1 0 ; -fx-border-color:  #16345B;
+   -fx-font-size: 15; 
+-fx-background-color:#edde3d;   
 }
 .label{
     -fx-font-size: 16;
     
+}
+.titre{
+    -fx-font-size: 26;
 }
 .add{
     -fx-background-color:#1D90EA;

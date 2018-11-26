@@ -106,6 +106,15 @@ public class EtablissementService implements IDao<Etablissement> {
         session.close();
         return etablissements;
     }
+    public int countEtablissement(){
+        int nb=0;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        nb = Integer.parseInt(session.createQuery("select count(e) from Etablissement e ").uniqueResult().toString());
+        session.getTransaction().commit();
+        session.close();
+        return nb;
+    }
 
     
 }

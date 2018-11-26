@@ -33,7 +33,7 @@ public class LoginController implements Initializable {
     Stage dialogStage = new Stage();
     Scene scene;
     Preferences preference = Preferences.userRoot();
-    
+
     @FXML
     private Button loginE;
     @FXML
@@ -50,16 +50,22 @@ public class LoginController implements Initializable {
             Employe e = es.findByEmail(username.getText());
 
             preference.put("idEmploye", String.valueOf(e.getId()));
-            if (e == null) {
-                infoBox("Enter Correct Email and Password", "Failed", null);
-            } else {
-                infoBox("Login Successfull", "Success", null);
-                Node source = (Node) event.getSource();
-                dialogStage = (Stage) source.getScene().getWindow();
-                dialogStage.close();
-                Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/vue/MenuVue.fxml")));
-                dialogStage.setScene(scene);
-                dialogStage.show();
+
+            if (e != null) {
+                if (e.getPassword().equals(password.getText())) {
+                    infoBox("Login Successfull", "Success", null);
+                    Node source = (Node) event.getSource();
+                    dialogStage = (Stage) source.getScene().getWindow();
+                    dialogStage.close();
+                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/vue/MenuVue.fxml")));
+                    dialogStage.setScene(scene);
+                    dialogStage.show();
+                } else {
+                    infoBox("المرجو التحقق من صحة المعلومات", "تنبيه", null);
+                }
+                
+            }else {
+                infoBox("المرجو التحقق من صحة المعلومات", "تنبيه", null);
             }
         } catch (Exception e) {
             e.printStackTrace();

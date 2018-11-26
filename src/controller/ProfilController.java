@@ -7,6 +7,7 @@ package controller;
 
 import classes.Profil;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +15,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
@@ -50,34 +53,61 @@ public class ProfilController implements Initializable {
     private void saveAction(ActionEvent event) {
         String m = code.getText().toString();
         String r = libelle.getText().toString();
+        if (code.getText().isEmpty() || libelle.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("تحذير");
+            alert.setHeaderText("تحذير");
+            alert.setContentText("المرجو ملئ كل الحقول");
 
-        ps.create(new Profil(m, r));
-        load();
-        clean();
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+            }
+        } else {
+            ps.create(new Profil(m, r));
+            load();
+            clean();
+        }
 
     }
 
     @FXML
     private void delete() {
-        ps.delete(ps.findById(index));
-        profilList.clear();
-        load();
-        clean();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("تأكيد");
+        alert.setHeaderText("تأكيد الحدف");
+        alert.setContentText("هل أنت متأكد من إزالة هدا الطالب ؟");
+//
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            ps.delete(ps.findById(index));
+            profilList.clear();
+            load();
+            clean();
+        } else {
+        }
 
     }
 
     @FXML
     private void update() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("تأكيد");
+        alert.setHeaderText("تأكيد الحدف");
+        alert.setContentText("هل أنت متأكد من إزالة هدا الطالب ؟");
+//
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            Profil p2 = ps.findById(index);
 
-        Profil p2 = ps.findById(index);
+            p2.setCode(code.getText());
+            p2.setLibelle(libelle.getText());
 
-        p2.setCode(code.getText());
-        p2.setLibelle(libelle.getText());
-
-        ps.update(p2);
-        profilList.clear();
-        load();
-        clean();
+            ps.update(p2);
+            profilList.clear();
+            load();
+            clean();
+        } else {
+        }
     }
 
     @Override

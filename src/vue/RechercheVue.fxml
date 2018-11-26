@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="562.0" prefWidth="654.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RechercheController">
    <children>
@@ -31,6 +32,9 @@
                            <GridPane.margin>
                               <Insets left="20.0" />
                            </GridPane.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
                         </Label>
                         <TextField fx:id="sershFieldnomComplet" promptText="أدخل الإسم الكامل أو الرقم الوطني" GridPane.columnIndex="1">
                            <GridPane.margin>
@@ -43,7 +47,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <SplitPane dividerPositions="0.38235294117647056" prefHeight="493.0" prefWidth="652.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.47692307692307695" prefHeight="493.0" prefWidth="652.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
@@ -62,8 +66,27 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <Label layoutX="193.0" layoutY="28.0" text="طباعة الشهادة المدرسية" />
-                              <Button layoutX="344.0" layoutY="24.0" mnemonicParsing="false" text="طبع" />
+                              <GridPane layoutX="161.0" layoutY="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="طباعة الشهادة المدرسية" GridPane.halignment="CENTER">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="84.0" text="طبع" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </GridPane>
                            </children></AnchorPane>
                     </items>
                   </SplitPane>

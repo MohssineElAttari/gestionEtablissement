@@ -19,18 +19,38 @@ public class Etablissement {
     @GeneratedValue
     private int id;
 
-    private String nom;
-    private String type;
-    private String region;
-    private String academie;
+    public Etablissement(String nom, String type, String region, String academie, String code, String ville, String telephone, String direction) {
+        this.nom = nom;
+        this.type = type;
+        this.region = region;
+        this.academie = academie;
+        this.code = code;
+        this.ville = ville;
+        this.telephone = telephone;
+        this.direction = direction;
+    }
 
-    public Etablissement(int id, String nom, String type, String region, String academie) {
+    public Etablissement(int id, String nom, String type, String region, String academie, String code, String ville, String telephone, String direction) {
         this.id = id;
         this.nom = nom;
         this.type = type;
         this.region = region;
         this.academie = academie;
+        this.code = code;
+        this.ville = ville;
+        this.telephone = telephone;
+        this.direction = direction;
     }
+
+    private String nom;
+    private String type;
+    private String region;
+    private String academie;
+    private String code;
+    private String ville;
+    private String telephone;
+    private String direction;
+  
 
     @Override
     public String toString() {
@@ -45,6 +65,38 @@ public class Etablissement {
         this.academie = academie;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getDirection() {
+        return direction;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+
     public Etablissement(String nom, String type, String region, String academie) {
         this.nom = nom;
         this.type = type;
@@ -55,18 +107,7 @@ public class Etablissement {
     public Etablissement() {
     }
 
-    public Etablissement(int id, String nom, String type, String region) {
-        this.id = id;
-        this.nom = nom;
-        this.type = type;
-        this.region = region;
-    }
-
-    public Etablissement(String nom, String type, String region) {
-        this.nom = nom;
-        this.type = type;
-        this.region = region;
-    }
+ 
 
     public int getId() {
         return id;

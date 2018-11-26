@@ -55,7 +55,7 @@ public class EtudiantController implements Initializable {
 
     Preferences userPreferences = Preferences.userRoot();
     String info = userPreferences.get("idEmploye", "-1");
-    
+
     EtudiantService es = new EtudiantService();
     ObservableList<Etudiant> etudiantList = FXCollections.observableArrayList();
     File myFile;
@@ -181,10 +181,22 @@ public class EtudiantController implements Initializable {
         dt1 = Date.from(instant1);
         String dec = decision.getText().toString();
 
-        es.create(new Etudiant(i, n, dt, l, der, c, dt1, dec, Integer.parseInt(num)));
+        if (nom.getText().isEmpty() || numInscription.getText().isEmpty() || lieuNaissance.getText().isEmpty() || dernierNiveau.getText().isEmpty() || numDossier.getText().isEmpty() || decision.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("تحذير");
+            alert.setHeaderText("تحذير");
+            alert.setContentText("المرجو ملئ كل الحقول");
 
-        load();
-        clean();
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+            }
+        } else {
+
+            es.create(new Etudiant(i, n, dt, l, der, c, dt1, dec, Integer.parseInt(num)));
+
+            load();
+            clean();
+        }
     }
 
 //    public void fillComboBox() {

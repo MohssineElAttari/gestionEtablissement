@@ -5,7 +5,9 @@
  */
 package controller;
 
+import classes.Etudiant;
 import classes.Profil;
+import java.math.BigInteger;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import services.EmployeService;
+import services.EtudiantService;
 import services.ProfilService;
 
 /**
@@ -36,20 +39,19 @@ public class ChartController implements Initializable {
 
     EmployeService es = new EmployeService();
     ProfilService ps = new ProfilService();
+    EtudiantService ets = new EtudiantService();
+    @FXML
+    private PieChart pieChart;
+    @FXML
+    private PieChart pieChart2;
+
+//       ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
 //
-//    ObservableList<PieChart.Data> pieChartData = null;
-//
-//    private void setChart2() {
 //        for (Profil p : ps.findAll()) {
-//            pieChartData = FXCollections.observableArrayList(new PieChart.Data(p.getLibelle(), es.CountEmployesByProfilName(p.getLibelle())));
+//            pieChartData.add(new PieChart.Data(p.getLibelle(), es.CountEmployesByProfilName(p.getLibelle())));
 //
 //        }
-//
-//        final PieChart pChart = new PieChart(pieChartData);
-//    }
-
-   
-
+//        pieChart.setData(pieChartData);
     @FXML
     private CategoryAxis xAxes = new CategoryAxis();
 
@@ -74,10 +76,28 @@ public class ChartController implements Initializable {
         mChart.setTitle("عدد الموظفين");
     }
 
+    public void setChart2() {
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+
+        for (String r : ets.DistinctDecision()) {
+            pieChartData.add(new PieChart.Data(r, ets.countDecision(r)));
+
+        }
+        pieChart.setData(pieChartData);
+    }
+       public void setChart3() {
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+
+        for (String r : ets.DistinctDernierNiveau()) {
+            pieChartData.add(new PieChart.Data(r, ets.countDernierNiveau(r)));
+
+        }
+        pieChart2.setData(pieChartData);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-//         final Label caption = new Label("");
+        //         final Label caption = new Label("");
 //        caption.setTextFill(Color.DARKORANGE);
 //        caption.setStyle("-fx-font: 24 arial;");
 //        for (final PieChart.Data data : pieChart.getData()) {
@@ -93,6 +113,8 @@ public class ChartController implements Initializable {
 //        }
 
         setChart();
-      
+        setChart2();
+        setChart3();
+
     }
 }

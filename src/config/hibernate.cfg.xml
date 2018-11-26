@@ -52,5 +52,6 @@ Contributor(s):
     <mapping class="classes.Etablissement"/>
     <mapping class="classes.Etudiant"/>
     <mapping class="classes.Profil"/>
+    <mapping class="classes.Attestation"/>
   </session-factory>
 </hibernate-configuration>

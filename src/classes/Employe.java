@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -28,7 +29,7 @@ public class Employe {
     private Date dateEmbauche;
     @ManyToOne
     private Profil profil;
-    @ManyToOne
+    @OneToOne
     private Etablissement etablissement;
 
     public Employe(int id, String nom, String prenom, String email, String password, Date dateNaissance, Date dateEmbauche, Profil profil, Etablissement etablissement) {
@@ -52,6 +53,27 @@ public class Employe {
         this.dateEmbauche = dateEmbauche;
         this.profil = profil;
         this.etablissement = etablissement;
+    }
+
+    public Employe(int id, String nom, String prenom, String email, String password, Date dateNaissance, Date dateEmbauche, Profil profil) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.password = password;
+        this.dateNaissance = dateNaissance;
+        this.dateEmbauche = dateEmbauche;
+        this.profil = profil;
+    }
+
+    public Employe(String nom, String prenom, String email, String password, Date dateNaissance, Date dateEmbauche, Profil profil) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.password = password;
+        this.dateNaissance = dateNaissance;
+        this.dateEmbauche = dateEmbauche;
+        this.profil = profil;
     }
 
     public Employe(int id, String nom, String prenom, String email, String password) {

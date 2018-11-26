@@ -7,6 +7,8 @@ package services;
 
 import classes.Etudiant;
 import dao.IDao;
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -119,4 +121,46 @@ public class EtudiantService implements IDao<Etudiant> {
 
         return ee;
     }
+
+    public List<String> DistinctDecision() {
+        List<String> nb = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        nb = session.createQuery("SELECT DISTINCT decision FROM Etudiant ").list();
+        session.getTransaction().commit();
+        session.close();
+        return nb;
+    }
+
+    public int countDecision(String nom) {
+        int nb = 0;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        nb = Integer.parseInt(session.createQuery("SELECT Count(e) FROM Etudiant e where decision = ? ").setParameter(0, nom).uniqueResult().toString());
+        //nb = Integer.parseInt(session.createSQLQuery("SELECT Count(*) FROM Etudiant where decision = " +nom).toString());
+        session.getTransaction().commit();
+        session.close();
+        return nb;
+    }
+
+    public List<String> DistinctDernierNiveau() {
+        List<String> nb = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        nb = session.createQuery("SELECT DISTINCT dernierNiveau FROM Etudiant ").list();
+        session.getTransaction().commit();
+        session.close();
+        return nb;
+    }
+
+    public int countDernierNiveau(String nom) {
+        int nb = 0;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        nb = Integer.parseInt(session.createQuery("SELECT Count(e) FROM Etudiant e where dernierNiveau = ? ").setParameter(0, nom).uniqueResult().toString());
+        session.getTransaction().commit();
+        session.close();
+        return nb;
+    }
+
 }
