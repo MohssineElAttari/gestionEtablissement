@@ -116,4 +116,14 @@ public class ProfilService implements IDao<Profil> {
             return profils;
         }
     }
+    public int countProfil(){
+        int nb = 0;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        nb = Integer.parseInt(session.createQuery("SELECT COUNT(p) FROM Profil p" ).uniqueResult().toString());
+        session.getTransaction().commit();
+        session.close();
+        return nb;
+   } 
 }
+

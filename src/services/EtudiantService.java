@@ -162,5 +162,14 @@ public class EtudiantService implements IDao<Etudiant> {
         session.close();
         return nb;
     }
+       public int countEtudiant(){
+          int nb = 0 ;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        nb = Integer.parseInt(session.createQuery("SELECT COUNT(e) FROM Etudiant e" ).uniqueResult().toString());
+        session.getTransaction().commit();
+        session.close();
+        return nb;
+   } 
 
 }

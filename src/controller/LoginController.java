@@ -60,11 +60,13 @@ public class LoginController implements Initializable {
                     Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/vue/MenuVue.fxml")));
                     dialogStage.setScene(scene);
                     dialogStage.show();
-                } else {
-                    infoBox("المرجو التحقق من صحة المعلومات", "تنبيه", null);
+                    dialogStage.setTitle("تطبيق");
                 }
-                
-            }else {
+//                } else {
+//                    infoBox("المرجو التحقق من صحة المعلومات", "تنبيه", null);
+//                }
+
+            } else if(e==null){
                 infoBox("المرجو التحقق من صحة المعلومات", "تنبيه", null);
             }
         } catch (Exception e) {

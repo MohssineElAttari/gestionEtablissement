@@ -142,4 +142,13 @@ public class EmployeService implements IDao<Employe> {
         session.close();
         return nb;
     }
+       public int countEmploye(){
+          int nb = 0;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        nb = Integer.parseInt(session.createQuery("SELECT COUNT(e) FROM Employe e" ).uniqueResult().toString());
+        session.getTransaction().commit();
+        session.close();
+        return nb;
+   } 
 }
