@@ -18,7 +18,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("vue/Login2Vue.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("vue/LoginVue.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("لوحة تسجيل الدخول");

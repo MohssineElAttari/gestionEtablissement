@@ -6,9 +6,12 @@
 package classes;
 
 import java.util.Date;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -17,54 +20,53 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class Attestation {
-    @Id
-    @GeneratedValue
-    private int id;
-    private String etudiant;
-    private String employe;
-    private String numero;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateEdition;
 
+    @EmbeddedId
+    private AttestationPK id;
+    @JoinColumn(name = "etudiant", referencedColumnName = "id", insertable = false, updatable = false)
+    @ManyToOne
+    private Etudiant etudiant;
+    @JoinColumn(name = "employe", referencedColumnName = "id", insertable = false, updatable = false)
+    @ManyToOne
+    private Employe employe;
+    private String numero;
     public Attestation() {
     }
 
-    public Attestation(int id, String etudiant, String employe, String numero, Date dateEdition) {
+    public Attestation(AttestationPK id, Etudiant etudiant, Employe employe, String numero) {
         this.id = id;
         this.etudiant = etudiant;
         this.employe = employe;
         this.numero = numero;
-        this.dateEdition = dateEdition;
     }
 
-    public Attestation(String etudiant, String employe, String numero, Date dateEdition) {
+    public Attestation(Etudiant etudiant, Employe employe, String numero) {
         this.etudiant = etudiant;
         this.employe = employe;
         this.numero = numero;
-        this.dateEdition = dateEdition;
     }
 
-    public int getId() {
+    public AttestationPK getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(AttestationPK id) {
         this.id = id;
     }
 
-    public String getEtudiant() {
+    public Etudiant getEtudiant() {
         return etudiant;
     }
 
-    public void setEtudiant(String etudiant) {
+    public void setEtudiant(Etudiant etudiant) {
         this.etudiant = etudiant;
     }
 
-    public String getEmploye() {
+    public Employe getEmploye() {
         return employe;
     }
 
-    public void setEmploye(String employe) {
+    public void setEmploye(Employe employe) {
         this.employe = employe;
     }
 
@@ -76,13 +78,4 @@ public class Attestation {
         this.numero = numero;
     }
 
-    public Date getDateEdition() {
-        return dateEdition;
     }
-
-    public void setDateEdition(Date dateEdition) {
-        this.dateEdition = dateEdition;
-    }
-    
-    
-}

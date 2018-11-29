@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1c59e836-f52d-4cfc-8266-97291620dd09">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="254"/>
+	<field name="nomecomplte" class="java.lang.String"/>
+	<field name="ville" class="java.lang.String"/>
+	<field name="dateNaissance" class="java.lang.String"/>
+	<field name="codeEtude" class="java.lang.String"/>
+	<field name="codeNational" class="java.lang.String"/>
+	<field name="niveauEtude" class="java.lang.String"/>
+	<field name="dateFin" class="java.lang.String"/>
+	<field name="commenter" class="java.lang.String"/>
+	<field name="date" class="java.lang.String"/>
+	<field name="etablissement" class="java.lang.String"/>
+	<field name="nomDerecteur" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="122" splitType="Stretch">
+			<image>
+				<reportElement x="247" y="0" width="308" height="79" uuid="e1cbd6ad-1d39-4520-b2b4-4b169641112a"/>
+				<imageExpression><![CDATA["D:\\Desktop\\OFPPT\\offshoring\\JavaFX\\javaFXEtablissement\\src\\image\\certaficat.PNG"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="434" y="80" width="121" height="20" uuid="b4a6349d-bbcf-43ac-8223-c8783fb24444"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[جهة : مراكش أسفي]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="445" y="100" width="110" height="20" uuid="0358e5d3-67f1-41a9-a1b7-02dd282f63ac"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[مديرية : الحوز																		 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="182" y="11" width="65" height="20" uuid="2fd437e4-a66e-4d3f-bc0d-e71d70ba00e9"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[المؤسسة : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="31" width="77" height="18" uuid="89bfb33c-00fb-437b-8567-ea3d0cbfa7c4"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[البلدة : تحناوت]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="49" width="117" height="20" uuid="03f8bdd7-5c38-41df-9f0d-7654ede43dea"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[رمز المؤسسة : 03791]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="119" y="69" width="128" height="20" uuid="48b7110b-a922-49b9-bc57-a51f52764732"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الهاتف : 0524484481]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="60" width="177" height="20" uuid="e1fb868b-ab0c-47db-ad71-c9081013a582"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الأكاديمية الجهوية للتربية والتكوين]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="11" width="170" height="20" uuid="b9a18ff4-8122-4ca4-9455-868aac67d5aa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{etablissement}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="104" splitType="Stretch">
+			<staticText>
+				<reportElement x="357" y="0" width="145" height="38" uuid="8d41d9d5-a635-4427-aaa2-5d186c51c66c"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[شهاة مدرسية  ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="0" width="170" height="38" uuid="1711422c-cf9c-48f6-9215-7f6cba5ed03a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[1/2018]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="371" y="58" width="145" height="20" uuid="a604ec7e-2272-42b2-b074-257b1d917130"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[يشهد الموقع أسفله السيد : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="463" y="84" width="53" height="20" uuid="e1565516-3453-4621-9a05-c7af2439432b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[بصفته :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="235" y="84" width="65" height="20" uuid="b80ff0a2-4909-4eeb-b137-03d9cb0f4308"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ مديرا ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="98" y="54" width="250" height="20" uuid="fb155621-aac8-418a-9903-87b0a5a7a619"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomDerecteur}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="9" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="193" splitType="Stretch">
+			<staticText>
+				<reportElement x="445" y="0" width="110" height="20" uuid="f9a197c3-f2f3-4ecf-8eda-1c555ad4658b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[أن التلميذ(ة) :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="448" y="32" width="107" height="20" uuid="6cf613ce-50f1-486d-bf34-3288661db755"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[المولود(ة) ب :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="257" y="32" width="177" height="20" uuid="c52e4a3f-a9bd-4938-86ec-69caf01d295f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ville}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="182" y="32" width="65" height="20" uuid="37ba07e6-b389-48e0-8dc8-c063f8561de9"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ بتاريخ :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="22" y="32" width="148" height="20" uuid="8e858596-6a1e-4f16-89ae-67864efc33db"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateNaissance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="434" y="62" width="121" height="20" uuid="a7759bc9-79ff-4a75-a33b-dbd4cb637484"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[المسجل تحت رقم :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="257" y="62" width="155" height="20" uuid="a385cf30-17c7-4172-947f-a42c3c6d388b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codeEtude}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="160" y="62" width="87" height="20" uuid="3d5a8dfa-8e86-450a-af6d-10dde2e4c885"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ الرقم الوطني :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="22" y="62" width="121" height="20" uuid="880d9a6e-83d0-402b-a710-5a154dfb09c2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codeNational}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="381" y="93" width="174" height="20" uuid="685a9802-3cf6-436b-9949-644a4ec61ca5"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[كان(ت) يتابع دراسته(ها) ب :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="98" y="93" width="249" height="20" uuid="e6b2ec11-9e82-459b-908b-4edb62783fec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{niveauEtude}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="381" y="127" width="174" height="20" uuid="d6e4aebc-2e73-4608-bf27-d356e0c758fd"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[و غادر(ت) المؤسسة بتاريخ :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="98" y="127" width="249" height="20" uuid="c81d24d9-a8a0-490d-8441-5171e52d8f9c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateFin}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="335" y="159" width="100" height="20" uuid="8ed0adc2-ce5a-434e-a8c1-f4f20b8177ad"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[سبب المغادرة :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="159" width="212" height="20" uuid="6764bd33-6ac3-4815-b1c0-4d89ba4bf758"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{commenter}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="247" y="0" width="187" height="20" uuid="a84e739e-0b35-413f-8e23-cef29ce3e2fd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomecomplte}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="194" splitType="Stretch">
+			<staticText>
+				<reportElement x="282" y="63" width="100" height="20" uuid="8702aa87-287e-47c7-9539-62a71ac76480"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[حرر بتحناوت في : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="98" y="63" width="159" height="20" uuid="50d16e5a-0fb5-466b-b26f-3e72884d8c07"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="96" width="100" height="20" uuid="69499a88-6178-416e-bce8-1db09d002cb4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[توقيع المدير]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="168" width="555" height="25" uuid="da4b7e38-98e6-4df1-9fe6-e04a54975445"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ملحوظة : هذه الشهادة لا تخول لصاحبها التسجيل في المؤسسة أخرى]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="15" width="555" height="24" uuid="334ac695-0dbb-4bd0-b83d-8e81d8e0e648"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ملاحظات : سلمت له هذهالشهادة لأعراض إدارية ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="112" y="50" width="336" height="1" uuid="acf6f0bc-d9a9-4d80-8062-f6de8938bebb"/>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="9" splitType="Stretch"/>
+	</summary>
+</jasperReport>

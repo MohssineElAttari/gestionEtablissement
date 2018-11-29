@@ -20,6 +20,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -50,7 +51,11 @@ public class MenuControllerAdmin implements Initializable {
     @FXML
     private Button idEmploye;
     @FXML
-    private Button idRecherche;
+    private Button idRecherche; 
+    @FXML
+    private Label nomEtablissement;
+    @FXML
+    private Label nomDericteur;
     Stage dialogStage = new Stage();
     Scene scene;
 //    Preferences userPreferences = Preferences.userRoot();
@@ -122,6 +127,8 @@ public class MenuControllerAdmin implements Initializable {
         logo.setImage(new Image("img/ministere.jpg", 200, 124, false, true));
         visibelButton();
         setChart();
+        nomDericteur.setText(e.getNom()+" "+e.getPrenom());
+        nomEtablissement.setText(e.getEtablissement().getNom());
 
     }
 

@@ -49,10 +49,9 @@ public class LoginController implements Initializable {
         try {
             Employe e = es.findByEmail(username.getText());
 
-            preference.put("idEmploye", String.valueOf(e.getId()));
-
             if (e != null) {
                 if (e.getPassword().equals(password.getText())) {
+                    preference.put("idEmploye", String.valueOf(e.getId()));
                     infoBox("Login Successfull", "Success", null);
                     Node source = (Node) event.getSource();
                     dialogStage = (Stage) source.getScene().getWindow();
@@ -61,12 +60,11 @@ public class LoginController implements Initializable {
                     dialogStage.setScene(scene);
                     dialogStage.show();
                     dialogStage.setTitle("تطبيق");
+                } else {
+                    infoBox("المرجو التحقق من صحة المعلومات", "تنبيه", null);
                 }
-//                } else {
-//                    infoBox("المرجو التحقق من صحة المعلومات", "تنبيه", null);
-//                }
 
-            } else if(e==null){
+            } else if (e == null) {
                 infoBox("المرجو التحقق من صحة المعلومات", "تنبيه", null);
             }
         } catch (Exception e) {
